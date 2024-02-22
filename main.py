@@ -8,6 +8,7 @@ from datetime import datetime
 pd.set_option('display.max_columns', None)
 
 # # Get movie list and pipeline--------------------------------------------------------------------------------
+# Those lines are commented because i don't want to spam IMDB's API
 # url_movies = 'https://www.imdb.com/chart/top/'
 # headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
 #
@@ -27,7 +28,7 @@ pd.set_option('display.max_columns', None)
 # movies_data = []
 # for movie in movies_names:
 #     url = 'https://www.omdbapi.com'
-#     params = {"plot": "full", "apikey": "632ea98", "type": "movie", "t": movie}
+#     params = {"plot": "full", "apikey": "<YOUR API KEY FROM IMDB>", "type": "movie", "t": movie}
 #
 #     response = requests.get(url, params=params)
 #     if response.status_code == 200:
