@@ -54,14 +54,21 @@ movies_genre = [movie["Genre"] for movie in data]
 
 # Release date
 movies_release = [movie["Released"] for movie in data]
+movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]
 
 # Length of the movies
 movies_length = [movie["Runtime"] for movie in data]
 movies_length = [int(length.replace(" min", "")) for length in movies_length]
 
+# Movie director__________________________
 movies_director = [movie["Director"] for movie in data]
+
+# Movie writers____________________________
 movies_writers = [movie["Writer"] for movie in data]
+
+# Movie actors_____________________________
 movies_actors = [movie["Actors"] for movie in data]
+
 movies_language = [movie["Language"] for movie in data]
 movies_country = [movie["Country"] for movie in data]
 movies_awards = [movie["Awards"] for movie in data]
