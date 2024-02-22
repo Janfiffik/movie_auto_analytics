@@ -7,7 +7,7 @@ from datetime import datetime
 
 pd.set_option('display.max_columns', None)
 
-# # Get movie list and pipeline
+# # Get movie list and pipeline--------------------------------------------------------------------------------
 # url_movies = 'https://www.imdb.com/chart/top/'
 # headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
 #
@@ -33,14 +33,13 @@ pd.set_option('display.max_columns', None)
 #     if response.status_code == 200:
 #         data = response.json()
 #         movies_data.append(data)
-#
 #     else:
 #         print("Error: ", response.status_code)
-#
+
 # with open("data/movies_raw_data.json", "w") as file:
 #     json.dump(movies_data, file, indent=4, separators=(',', ': '))
 
-# Converting JSON to csv file
+# Converting JSON to csv file----------------------------------------------------------------------------------------
 with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
@@ -50,10 +49,13 @@ movies_titles = [movie["Title"] for movie in data]
 # Rating how old people can watch movie
 movies_rated = [movie["Rated"] for movie in data]
 
+# Genre of the movies
 movies_genre = [movie["Genre"] for movie in data]
 
+# Release date
 movies_release = [movie["Released"] for movie in data]
 
+# Length of the movies
 movies_length = [movie["Runtime"] for movie in data]
 movies_length = [int(length.replace(" min", "")) for length in movies_length]
 
