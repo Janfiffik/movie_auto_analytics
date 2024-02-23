@@ -7,37 +7,47 @@ from datetime import datetime
 
 pd.set_option('display.max_columns', None)
 
-# # Get movie list and pipeline--------------------------------------------------------------------------------
-# url_movies = 'https://www.imdb.com/chart/top/'
-# headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
-#
-# response = requests.get(url_movies, headers=headers)
-# movies_names = []
-# if response.status_code == 200:
-#     raw_data = BeautifulSoup(response.content, 'html.parser')
-#     movie_titles = raw_data.find_all(class_='ipc-title-link-wrapper')
-#     movies_list = [movie.text for movie in movie_titles]
-#     for movie in movies_list[0:250]:
-#         movie = (movie.split(' ', 1))
-#         movies_names.append(movie[1])
-# else:
-#     print("Error: ", response.status_code)
-# # print(movies_names)  # to check if there are just movie names in list
-#
-# movies_data = []
-# for movie in movies_names:
-#     url = 'https://www.omdbapi.com'
-#     params = {"plot": "full", "apikey": "<YOUR API KEY FROM IMDB>", "type": "movie", "t": movie}
-#
-#     response = requests.get(url, params=params)
-#     if response.status_code == 200:
-#         data = response.json()
-#         movies_data.append(data)
-#     else:
-#         print("Error: ", response.status_code)
 
-# with open("data/movies_raw_data.json", "w") as file:
-#     json.dump(movies_data, file, indent=4, separators=(',', ': '))
+def imdb_top_movies():
+    """For getting movie list from imdb database by webscraping"""
+    url_movies = 'https://www.imdb.com/chart/top/'
+    headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
+
+    response = requests.get(url_movies, headers=headers)
+    movies_names = []
+    if response.status_code == 200:
+        raw_data = BeautifulSoup(response.content, 'html.parser')
+        movie_titles = raw_data.find_all(class_='ipc-title-link-wrapper')
+        movies_list = [movie.text for movie in movie_titles]
+        for movie in movies_list[0:250]:
+            movie = (movie.split(' ', 1))
+            movies_names.append(movie[1])
+    else:
+        print("Error: ", response.status_code)
+    return movies_names
+
+
+def movie_json_data(movies_names, plot="full", api_key="YOUR KEY"):
+    """For getting raw JSON data from IMDb database. You need pass as argument list with movie names.
+       its creates JSON file
+       You can get your API key by signing in to IMDb database.
+
+       plot: default value: "full". Return full data from IMDB database.
+    """
+    movies_data = []
+    for movie in movies_names:
+        url = 'https://www.omdbapi.com'
+        params = {"plot": plot, "apikey": api_key, "type": "movie", "t": movie}
+
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            raw_data = response.json()
+            movies_data.append(raw_data)
+        else:
+            print("Error: ", response.status_code)
+
+    with open("data/movies_raw_data.json", "w") as json_file:
+        json.dump(movies_data, json_file, indent=4, separators=(',', ': '))
 
 # Converting JSON to csv file----------------------------------------------------------------------------------------
 with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
