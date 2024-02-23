@@ -27,17 +27,15 @@ def imdb_top_movies():
     return movies_names
 
 
-def movie_json_data(movies_names, plot="full", api_key="YOUR KEY"):
+def movie_json_data(movies_names, api_key="YOUR KEY"):
     """For getting raw JSON data from IMDb database. You need pass as argument list with movie names.
        its creates JSON file
        You can get your API key by signing in to IMDb database.
-
-       plot: default value: "full". Return full data from IMDB database.
     """
     movies_data = []
     for movie in movies_names:
         url = 'https://www.omdbapi.com'
-        params = {"plot": plot, "apikey": api_key, "type": "movie", "t": movie}
+        params = {"plot": "full", "apikey": api_key, "type": "movie", "t": movie}
 
         response = requests.get(url, params=params)
         if response.status_code == 200:
@@ -64,11 +62,11 @@ movies_genre = [movie["Genre"] for movie in data]
 
 # Release date
 movies_release = [movie["Released"] for movie in data]
-movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]
+movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]        # Done
 
 # Length of the movies
 movies_length = [movie["Runtime"] for movie in data]
-movies_length = [int(length.replace(" min", "")) for length in movies_length]
+movies_length = [int(length.replace(" min", "")) for length in movies_length]            # Done
 
 # Movie director__________________________
 movies_director = [movie["Director"] for movie in data]
@@ -81,31 +79,26 @@ movies_actors = [movie["Actors"] for movie in data]
 
 movies_language = [movie["Language"] for movie in data]
 movies_country = [movie["Country"] for movie in data]
+
 movies_awards = [movie["Awards"] for movie in data]
+print(movies_awards)
 
 movies_imdb_rating = [movie["imdbRating"] for movie in data]
-movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]
+movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]                   # Done
 
 movies_imdb_votes = [movie["imdbVotes"] for movie in data]
-movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]
+movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]          # Done
 
+# Convert str to int and get rid of 'N/A' value.
 movies_cinema_earnings = [movie["BoxOffice"] for movie in data]
-
-
-# for title in movies_titles:
-#     print(title)
-# for year in movies_years:
-#     print(year)
-# for rate in movies_rated:
-#     print(rate)
-# for genre in movies_genre:
-#     print(genre)
-# for release in movies_release:
-#     print(release)
-# for length in movies_length:
-#     print(length)
-# for director in movies_director:
-#     print(director)
+movies_cinema_earnings = [earning.replace(',', "") for earning in movies_cinema_earnings]  # Get rid of ','
+new_earnings = []                                                                          # New temporary list
+for earning in movies_cinema_earnings:
+    if earning != 'N/A':
+        new_earnings.append(int(earning.replace('$', "")))
+    else:
+        new_earnings.append(0)
+movies_cinema_earnings = new_earnings
 
 data_csv = pd.DataFrame()
 data_csv.index = movies_titles

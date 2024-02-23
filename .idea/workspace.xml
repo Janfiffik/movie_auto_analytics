@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Data cleaning and preprocessing">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -61,7 +61,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708679394730</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file.">
+      <created>1708680282335</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708680282335</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,6 +85,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Formatting data in cells" />
     <MESSAGE value="Data cleaning and preprocessing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data cleaning and preprocessing" />
+    <MESSAGE value="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file." />
   </component>
 </project>
