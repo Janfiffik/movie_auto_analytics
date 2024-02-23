@@ -8,6 +8,7 @@ from datetime import datetime
 pd.set_option('display.max_columns', None)
 
 # # Get movie list and pipeline--------------------------------------------------------------------------------
+# Those lines are commented because i don't want to spam IMDB's API
 # url_movies = 'https://www.imdb.com/chart/top/'
 # headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
 #
@@ -27,7 +28,7 @@ pd.set_option('display.max_columns', None)
 # movies_data = []
 # for movie in movies_names:
 #     url = 'https://www.omdbapi.com'
-#     params = {"plot": "full", "apikey": "632ea98", "type": "movie", "t": movie}
+#     params = {"plot": "full", "apikey": "<Add your own API key>", "type": "movie", "t": movie}  632ea98
 #
 #     response = requests.get(url, params=params)
 #     if response.status_code == 200:
@@ -71,7 +72,10 @@ movies_actors = [movie["Actors"] for movie in data]
 
 movies_language = [movie["Language"] for movie in data]
 movies_country = [movie["Country"] for movie in data]
+
+# Movie awards-----------------------------------------
 movies_awards = [movie["Awards"] for movie in data]
+print(movies_awards)
 
 movies_imdb_rating = [movie["imdbRating"] for movie in data]
 movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]
@@ -81,22 +85,7 @@ movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]
 
 movies_cinema_earnings = [movie["BoxOffice"] for movie in data]
 
-
-# for title in movies_titles:
-#     print(title)
-# for year in movies_years:
-#     print(year)
-# for rate in movies_rated:
-#     print(rate)
-# for genre in movies_genre:
-#     print(genre)
-# for release in movies_release:
-#     print(release)
-# for length in movies_length:
-#     print(length)
-# for director in movies_director:
-#     print(director)
-
+# Create DataFrame with movies----------------------------
 data_csv = pd.DataFrame()
 data_csv.index = movies_titles
 data_csv["Released"] = movies_release
@@ -113,4 +102,4 @@ data_csv["Imdb_Rating"] = movies_imdb_rating
 data_csv["Imdb_Votes"] = movies_imdb_votes
 data_csv["Cinema_earnings"] = movies_cinema_earnings
 
-print(data_csv.head(5))
+
