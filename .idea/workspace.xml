@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file.">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating third function that creates gross income , budget etc... for movies by webscraping imdb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/movies_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/movies_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708682062706</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Creating third function that creates gross income , budget etc... for movies by webscraping imdb">
+      <created>1708712156158</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708712156158</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +101,7 @@
     <MESSAGE value="Formatting data in cells" />
     <MESSAGE value="Data cleaning and preprocessing" />
     <MESSAGE value="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file." />
+    <MESSAGE value="Creating third function that creates gross income , budget etc... for movies by webscraping imdb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating third function that creates gross income , budget etc... for movies by webscraping imdb" />
   </component>
 </project>

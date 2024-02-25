@@ -6,6 +6,7 @@ import json
 from bs4 import BeautifulSoup
 from datetime import datetime
 import time as tm
+import re
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
@@ -67,12 +68,12 @@ def movie_prices(movies):
         headers = {'User-Agent': 'Chrome/58.0.3029.110', 'Accept-Language': 'en-US,en;q=0.9'}
         response = requests.get(url_movie_price, headers=headers)
         response_data = BeautifulSoup(response.content, 'html.parser')
-        movie_budget = response_data.find_all(class_="ipc-metadata-list-item__list-content-item")
-        movie_price = [movie.text for movie in movie_budget]
+        movie_budget_str = response_data.find_all(class_="ipc-metadata-list-item__list-content-item")
+        movie_price = [movie.text for movie in movie_budget_str]
 
-        movie_price = [price.replace(',', "") for price in movie_price if '$' in price]
-        movie_price = [price.replace('(estimated)', '') for price in movie_price]
-        movie_price = [price.replace('$', '') for price in movie_price]
+        movie_price = [budget.replace(',', "") for budget in movie_price if '$' in budget]
+        movie_price = [budget.replace('(estimated)', '') for budget in movie_price]
+        movie_price = [budget.replace('$', '') for budget in movie_price]
 
         try:
             budgets_list.append(movie_price[0])
@@ -92,6 +93,15 @@ def movie_prices(movies):
             gross_world.append("0")
         tm.sleep(random.choice(range(0, 1)))
     return [budgets_list, gross_us, gross_world, opening_us_canada]
+
+
+def data_type_test(input_data):
+    """Prints first 3 rows from DataFrame
+    and types of data stored in dataframes columns"""
+    print(input_data.head(3))
+    column_names = input_data.columns
+    for i in column_names:
+        print(f"Date type column: {i} {type(input_data[i].iloc[0])}")
 
 # Converting JSON to csv file----------------------------------------------------------------------------------------
 with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
@@ -161,11 +171,25 @@ movies_imdb_id = [movie["imdbID"] for movie in data]
 # data_csv.to_csv("data/movies_data.csv", index=True)
 
 csv_data = pd.read_csv('data/movies_data.csv')
-print(csv_data.shape)
-
-print(csv_data.columns)
-
-print(csv_data[['Unnamed: 0', "Movie_Budget", 'Gross_in_US', 'World_gross_income', 'Opening_US_CANADA']])
+data_shape = csv_data.shape
+print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
 
 
+# Set Unnamed: 0 column as index and renamed it to Titles:
+csv_data.set_index(csv_data["Unnamed: 0"], inplace=True)
+csv_data.index.name = "Titles:"
+csv_data.reset_index(inplace=True)
+csv_data.set_index(csv_data["Titles:"], inplace=True)
 
+# Converting str to int in: ["Movie_Budget", "Opening_US_CANADA", "Gross_in_US", "World_gross_income"]
+movie_budget = csv_data["Movie_Budget"]
+new_budget = []
+for price in movie_budget:
+    try:
+        new_budget.append(int(price))
+    except ValueError:
+        price = re.findall(r"\d+", price)
+        new_budget.append(price)
+csv_data["Movie_Budget"] = new_budget
+
+data_type_test(csv_data)
