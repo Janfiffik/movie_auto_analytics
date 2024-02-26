@@ -102,6 +102,8 @@ def data_type_test(input_data):
     column_names = input_data.columns
     for i in column_names:
         print(f"Date type column: {i} {type(input_data[i].iloc[0])}")
+    data_shape = input_data.shape
+    print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
 
 # Converting JSON to csv file----------------------------------------------------------------------------------------
 with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
@@ -171,9 +173,6 @@ movies_imdb_id = [movie["imdbID"] for movie in data]
 # data_csv.to_csv("data/movies_data.csv", index=True)
 
 csv_data = pd.read_csv('data/movies_data.csv')
-data_shape = csv_data.shape
-print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
-
 
 # Set Unnamed: 0 column as index and renamed it to Titles:
 csv_data.set_index(csv_data["Unnamed: 0"], inplace=True)
@@ -192,4 +191,29 @@ for price in movie_budget:
         new_budget.append(price)
 csv_data["Movie_Budget"] = new_budget
 
+# Creating new column Oscar_Wins with number of wins
+raw_rewards = csv_data["Rewards"]
+oscar_wins = []
+oscar_nomination = []
+for reward in raw_rewards:
+    sublist = reward.split('.')
+    print(sublist)
+    sub_strings = ["Won", "Oscars", "Oscar"]
+    sub_string1 = ["Nominated", "Oscar", "Oscars"]
+    if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
+        wins = re.findall(r'\d+', sublist[0])
+        oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
+        oscar_nomination.append(0)
+    elif all(sublist[0].find(sub_string) != -1 for sub_string in sub_string1):
+        wins = re.findall(r'\d+', sublist[0])
+        oscar_nomination.extend(map(int, wins))
+        oscar_wins.append(0)
+    else:
+        oscar_wins.append(0)
+        oscar_nomination.append(0)
+
+csv_data["Oscar_Wins"] = oscar_wins              # Append new columns to DataFrame
+csv_data["Oscar_Nomination"] = oscar_nomination
 data_type_test(csv_data)
+
+
