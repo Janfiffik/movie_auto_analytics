@@ -215,31 +215,46 @@ for reward in raw_rewards:
         oscar_nomination.append(0)
 # --------------------------------------------------------------------
 
-other_wins = []
-other_nominations = []
-
 # creating new list with other nominations and wins.
-new_list = []
+new_nom_wins = []
+
 for reward in raw_rewards:
     sublist = reward.split('.')
     if len(sublist) == 2:
         new_list = sublist[1].split('&')
-        print(new_list)
+        new_nom_wins.append(new_list)
     else:
         new_list = sublist[0].split('&')
         if len(new_list) != 2:
             new_list.append("0")
+        new_nom_wins.append(new_list)
 
+other_wins = []
+other_nominations = []
 
+for i in new_nom_wins:
+    if "wins" in i[0]:
+        win = re.findall(r'\d+', i[0])
+        win = win[0]
+        other_wins.append(int(win))
+    else:
+        other_wins.append(0)
+    if "nominations" in i[1]:
+        nomination = re.findall(r"\d+", i[1])
+        nomination = nomination[0]
+        other_nominations.append(int(nomination))
+    else:
+        other_nominations.append(0)
+
+print(len(new_nom_wins), "/250")
 print(f"Wins:\n{other_wins}\n{len(other_wins)}\nNominations: {other_nominations}\n{len(other_nominations)}")
-
 
  # Append new columns to DataFrame------------------
 csv_data["Oscar_Wins"] = oscar_wins
 csv_data["Oscar_Nomination"] = oscar_nomination
-# csv_data["Other_Wins"] = other_wins
-# csv_data["Other_Nominations"] = other_nominations
+csv_data["Other_Wins"] = other_wins
+csv_data["Nominations_Total"] = other_nominations
 
-# data_type_test(csv_data)
+data_type_test(csv_data, head=4)
 
 

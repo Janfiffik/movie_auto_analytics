@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Adding new columns with oscar nominations and oscar wins">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Adding new columns with other nominations and other wins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -97,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708934706820</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adding new columns with other nominations and other wins">
+      <created>1708942353873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708942353873</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +125,7 @@
     <MESSAGE value="Creating third function that creates gross income , budget etc... for movies by webscraping imdb" />
     <MESSAGE value="Updating column names and data types stored in columns." />
     <MESSAGE value="Adding new columns with oscar nominations and oscar wins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding new columns with oscar nominations and oscar wins" />
+    <MESSAGE value="Adding new columns with other nominations and other wins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding new columns with other nominations and other wins" />
   </component>
 </project>
