@@ -95,10 +95,10 @@ def movie_prices(movies):
     return [budgets_list, gross_us, gross_world, opening_us_canada]
 
 
-def data_type_test(input_data):
+def data_type_test(input_data, head=5):
     """Prints first 3 rows from DataFrame
     and types of data stored in dataframes columns"""
-    print(input_data.head(3))
+    print(input_data.head(head))
     column_names = input_data.columns
     for i in column_names:
         print(f"Date type column: {i} {type(input_data[i].iloc[0])}")
@@ -193,13 +193,15 @@ csv_data["Movie_Budget"] = new_budget
 
 # Creating new column Oscar_Wins with number of wins
 raw_rewards = csv_data["Rewards"]
+
+# Oscar/ Oscar nominations
 oscar_wins = []
 oscar_nomination = []
 for reward in raw_rewards:
     sublist = reward.split('.')
-    print(sublist)
     sub_strings = ["Won", "Oscars", "Oscar"]
     sub_string1 = ["Nominated", "Oscar", "Oscars"]
+
     if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
         wins = re.findall(r'\d+', sublist[0])
         oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
@@ -211,9 +213,33 @@ for reward in raw_rewards:
     else:
         oscar_wins.append(0)
         oscar_nomination.append(0)
+# --------------------------------------------------------------------
 
-csv_data["Oscar_Wins"] = oscar_wins              # Append new columns to DataFrame
+other_wins = []
+other_nominations = []
+
+# creating new list with other nominations and wins.
+new_list = []
+for reward in raw_rewards:
+    sublist = reward.split('.')
+    if len(sublist) == 2:
+        new_list = sublist[1].split('&')
+        print(new_list)
+    else:
+        new_list = sublist[0].split('&')
+        if len(new_list) != 2:
+            new_list.append("0")
+
+
+print(f"Wins:\n{other_wins}\n{len(other_wins)}\nNominations: {other_nominations}\n{len(other_nominations)}")
+
+
+ # Append new columns to DataFrame------------------
+csv_data["Oscar_Wins"] = oscar_wins
 csv_data["Oscar_Nomination"] = oscar_nomination
-data_type_test(csv_data)
+# csv_data["Other_Wins"] = other_wins
+# csv_data["Other_Nominations"] = other_nominations
+
+# data_type_test(csv_data)
 
 

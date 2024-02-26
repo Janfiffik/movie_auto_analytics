@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating column names and data types stored in columns.">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Adding new columns with oscar nominations and oscar wins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -90,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708873566952</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Adding new columns with oscar nominations and oscar wins">
+      <created>1708934706820</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708934706820</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,6 +117,7 @@
     <MESSAGE value="Data cleaning and preprocessing, Creating two functions: imdb_top_movies it returns list with movie names. And movie_json_data: it creates raw json file." />
     <MESSAGE value="Creating third function that creates gross income , budget etc... for movies by webscraping imdb" />
     <MESSAGE value="Updating column names and data types stored in columns." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating column names and data types stored in columns." />
+    <MESSAGE value="Adding new columns with oscar nominations and oscar wins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding new columns with oscar nominations and oscar wins" />
   </component>
 </project>
