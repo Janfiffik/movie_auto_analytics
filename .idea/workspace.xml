@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Adding new columns with other nominations and other wins">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating column names and comment print statements for controlling DataFrame">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +27,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Janokop/PycharmProjects/auto_it_analysis/automatic_analysis",
+    "last_opened_file_path": "C:/Users/Janokop/PycharmProjects/data_analisys",
     "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
@@ -111,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708952382001</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updating column names and comment print statements for controlling DataFrame">
+      <created>1709035138030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709035138030</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +139,7 @@
     <MESSAGE value="Updating column names and data types stored in columns." />
     <MESSAGE value="Adding new columns with oscar nominations and oscar wins" />
     <MESSAGE value="Adding new columns with other nominations and other wins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding new columns with other nominations and other wins" />
+    <MESSAGE value="Updating column names and comment print statements for controlling DataFrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating column names and comment print statements for controlling DataFrame" />
   </component>
 </project>
