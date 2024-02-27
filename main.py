@@ -95,13 +95,20 @@ def movie_prices(movies):
     return [budgets_list, gross_us, gross_world, opening_us_canada]
 
 
-def data_type_test(input_data, head=5):
-    """Prints first 3 rows from DataFrame
-    and types of data stored in dataframes columns"""
+def data_type_test(input_data, head=5, data_type=False):
+    """Prints first 5 rows from DataFrame
+       and types of data stored in dataframes columns.
+
+       It accepts argument head=integer
+       to pick how many lines from DataFrame should be printed in terminal
+
+       Argument data_type=True prints data type in each column in DataFrame.
+    """
     print(input_data.head(head))
     column_names = input_data.columns
-    for i in column_names:
-        print(f"Date type column: {i} {type(input_data[i].iloc[0])}")
+    if data_type:
+        for j in column_names:
+            print(f"Date type column: {j} {type(input_data[j].iloc[0])}")
     data_shape = input_data.shape
     print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
 
@@ -230,8 +237,7 @@ for reward in raw_rewards:
         new_nom_wins.append(new_list)
 
 other_wins = []
-other_nominations = []
-
+total_nominations = []
 for i in new_nom_wins:
     if "wins" in i[0]:
         win = re.findall(r'\d+', i[0])
@@ -242,19 +248,20 @@ for i in new_nom_wins:
     if "nominations" in i[1]:
         nomination = re.findall(r"\d+", i[1])
         nomination = nomination[0]
-        other_nominations.append(int(nomination))
+        total_nominations.append(int(nomination))
     else:
-        other_nominations.append(0)
+        total_nominations.append(0)
 
-print(len(new_nom_wins), "/250")
-print(f"Wins:\n{other_wins}\n{len(other_wins)}\nNominations: {other_nominations}\n{len(other_nominations)}")
+# For checking what is inside updated DataFrame
+# print(len(new_nom_wins), "/250")
+# print(f"Wins:\n{other_wins}\n{len(other_wins)}\nNominations: {total_nominations}\n{len(total_nominations)}")
 
  # Append new columns to DataFrame------------------
 csv_data["Oscar_Wins"] = oscar_wins
 csv_data["Oscar_Nomination"] = oscar_nomination
 csv_data["Other_Wins"] = other_wins
-csv_data["Nominations_Total"] = other_nominations
+csv_data["Nominations_Total"] = total_nominations
 
-data_type_test(csv_data, head=4)
-
-
+data_type_test(csv_data, head=4, data_type=True)
+# Write updated DataFrame to file
+csv_data.to_csv("data/movies_data.csv", index=True)
