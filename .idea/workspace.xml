@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Adding Flask app to Git">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/movies_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/movies_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/movies_raw_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/movies_raw_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Finishing automated script for getting data from IMDB database">
+      <change beforePath="$PROJECT_DIR$/main_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_flask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Janokop/PycharmProjects/data_analisys",
+    "last_opened_file_path": "C:/Users/Janokop/PycharmProjects/Colors_in_pictures_Web_site",
     "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
@@ -134,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709059465687</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Finishing automated script for getting data from IMDB database">
+      <created>1709102643202</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709102643202</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +162,7 @@
     <MESSAGE value="Adding new columns with other nominations and other wins" />
     <MESSAGE value="Updating column names and comment print statements for controlling DataFrame" />
     <MESSAGE value="Adding Flask app to Git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Flask app to Git" />
+    <MESSAGE value="Finishing automated script for getting data from IMDB database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finishing automated script for getting data from IMDB database" />
   </component>
 </project>
