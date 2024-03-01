@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Showing plots in to website">
-      <change afterPath="$PROJECT_DIR$/application/routs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard for data analysis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_flask.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routs.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +43,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis\movie_auto_analytics\application" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -174,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709195447004</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Creating dashboard for data analysis">
+      <created>1709296025580</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1709296025580</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,6 +211,7 @@
     <MESSAGE value="Adding Flask app for showing data analysis" />
     <MESSAGE value="creating css file and dependency in to index.html file" />
     <MESSAGE value="Showing plots in to website" />
-    <option name="LAST_COMMIT_MESSAGE" value="Showing plots in to website" />
+    <MESSAGE value="Creating dashboard for data analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating dashboard for data analysis" />
   </component>
 </project>
