@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard for data analysis">
-      <change afterPath="$PROJECT_DIR$/application/Templates/layout.html" afterDir="false" />
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard web app for data analysis">
+      <change afterPath="$PROJECT_DIR$/application/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/Templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
     </list>
@@ -19,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -191,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709296318833</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Creating dashboard web app for data analysis">
+      <created>1709301022340</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1709301022340</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,6 +227,7 @@
     <MESSAGE value="creating css file and dependency in to index.html file" />
     <MESSAGE value="Showing plots in to website" />
     <MESSAGE value="Creating dashboard for data analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating dashboard for data analysis" />
+    <MESSAGE value="Creating dashboard web app for data analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating dashboard web app for data analysis" />
   </component>
 </project>
