@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, IntegerField, FloatField
+from wtforms import StringField, SelectField, IntegerField, FloatField, SubmitField
 from wtforms.validators import DataRequired
 
 
 class NewMovieForm(FlaskForm):
     title = StringField('Movie Title', validators=[DataRequired()])
+    released = StringField("Date of release", validators=[DataRequired()])
     genre = SelectField('Movie genre', validators=[DataRequired()],
                         choices=[('Drama', 'Drama'), ( "Crime", 'Crime'), ("Action", 'Action'),
                                  ("Biography", 'Biography'), ("History", 'History'), ("Adventure", "Adventure"),
@@ -31,8 +32,9 @@ class NewMovieForm(FlaskForm):
     Imdb_ID = StringField("IMDb ID", validators=[DataRequired()])
     movie_budget = IntegerField("Movie budget", validators=[DataRequired()])
     Gross_US = IntegerField("Gross income in USA", validators=[DataRequired()])
-    opening_US_CANADA = IntegerField("Income from opening in USA and Canada", validators=[DataRequired])
+    opening_US_CANADA = IntegerField("Income from opening in USA and Canada", validators=[DataRequired()])
     Oscar_Wins = IntegerField("Number of oscars", validators=[DataRequired()])
     Oscar_Nomination = IntegerField("Number oscar nominations", validators=[DataRequired()])
     Other_Wins = IntegerField("Other Wins", validators=[DataRequired()])
     Nominations_Total = IntegerField("Total number of nominations", validators=[DataRequired()])
+    submit = SubmitField("Add movie to DataBase")

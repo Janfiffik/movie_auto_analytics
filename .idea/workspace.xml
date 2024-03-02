@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard web app for data analysis">
-      <change afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard web app for data analysis. Adding Flask-Wtf forms">
+      <change afterPath="$PROJECT_DIR$/application/Templates/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -210,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709364837246</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Creating dashboard web app for data analysis. Adding Flask-Wtf forms">
+      <created>1709372768127</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1709372768127</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,6 +248,7 @@
     <MESSAGE value="Showing plots in to website" />
     <MESSAGE value="Creating dashboard for data analysis" />
     <MESSAGE value="Creating dashboard web app for data analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating dashboard web app for data analysis" />
+    <MESSAGE value="Creating dashboard web app for data analysis. Adding Flask-Wtf forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating dashboard web app for data analysis. Adding Flask-Wtf forms" />
   </component>
 </project>
