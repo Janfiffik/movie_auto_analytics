@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Creating dashboard web app for data analysis. Adding Flask-Wtf forms">
-      <change afterPath="$PROJECT_DIR$/application/Templates/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/Templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/add.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709372768127</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Creating dashboard web app for data analysis. Adding Flask-Wtf forms">
+      <created>1709374906792</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1709374906792</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
