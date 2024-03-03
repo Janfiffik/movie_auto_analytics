@@ -177,8 +177,8 @@ while True:
         movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]          # Done
 
         movies_imdb_id = [movie["imdbID"] for movie in data]
-        #
-        # # Creating data Frame-----------------------------------------------
+
+        # # Creating data_base -----------------------------------------------
         csv_data = pd.DataFrame()
         csv_data["Titles"] = movies_titles
         csv_data["Released"] = movies_release
