@@ -1,4 +1,5 @@
-import csv
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 import random
 import pandas as pd
 import requests
@@ -7,9 +8,15 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import time as tm
 import re
+from application import app, db
+from application.models import MovieDatabase
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
+
+
+def save_data_to_database():
+    pass
 
 
 def imdb_top_movies():
@@ -113,7 +120,12 @@ def data_type_test(input_data, head=5, data_type=False):
     print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
 
 
+def if_old_data():
+    pass
+
 # Code automation-----------------------------------------------------------------------------------------------
+
+
 def schedule_yearly():
     now = datetime.now()
     current_year = now.year
@@ -242,7 +254,6 @@ while True:
 
         # creating new list with other nominations and wins.
         new_nom_wins = []
-
         for reward in raw_rewards:
             sublist = reward.split('.')
             if len(sublist) == 2:
@@ -275,32 +286,6 @@ while True:
         csv_data["Oscar_Nomination"] = oscar_nomination
         csv_data["Other_Wins"] = other_wins
         csv_data["Nominations_Total"] = total_nominations
-
-        # Directors--------------------------------------------
-        director_list = [director.split(",") for director in csv_data["Director"]]
-        csv_data["Director"] = director_list
-
-        # Writers-----------------------------------------------
-        writer_list = [writer.split(',') for writer in csv_data["Writers"]]
-        csv_data["Writers"] = writer_list
-
-        # Country-----------------------------------------------
-        country_list = [country.split(',') for country in csv_data["Country"]]
-        csv_data["Country"] = country_list
-
-        # Language----------------------------------------------
-        language_list = []
-        for i in csv_data["Language"]:
-            if isinstance(i, str):
-                language = i.split(',')
-                language_list.append(language)
-            else:
-                language_list.append("Nan")
-        csv_data["Language"] = language_list
-
-        # Actors------------------------------------------------
-        actors_list = [actor.split(',') for actor in csv_data["Actors"]]
-        csv_data["Actors"] = actors_list
 
         # Deleting useless columns------------------------------
         del csv_data["Rewards"]
