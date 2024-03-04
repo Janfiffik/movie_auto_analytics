@@ -1,4 +1,66 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h2>This is index.html file</h2>
+
+<div class="col-sm-10 ml-auto mr-auto ">
+    <h2>Movies Data</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Released</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Length</th>
+                <th scope="col">Age Rating</th>
+                <th scope="col">Country</th>
+                <th scope="col">Language</th>
+                <th scope="col">Director</th>
+                <th scope="col">Writers</th>
+                <th scope="col">Actors</th>
+                <th scope="col">Imdb_Rating</th>
+                <th scope="col">Imdb_Votes</th>
+                <th scope="col">Imdb_ID</th>
+                <th scope="col">Movie_Budget</th>
+                <th scope="col">Gross in USA</th>
+                <th scope="col">World Gross</th>
+                <th scope="col">Opening USA and Canada</th>
+                <th scope="col">Oscar Wins</th>
+                <th scope="col">Oscar Nominations</th>
+                <th scope="col">Other Wins</th>
+                <th scope="col">Total Nominations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for entry in entries %}
+                <th scope="row">{{loop.index}}</th>
+                <td>{{entry.Title}}</td>
+                <td>{{entry.Released.strftime("%Y-%d-%m")}}</td>
+                <td>{{entry.Genre}}</td>
+                <td>{{entry.Length}}min</td>
+                <td>{{entry.Age_Rating}}</td>
+                <td>{{entry.Country}}</td>
+                <td>{{entry.Language}}</td>
+                <td>{{entry.Director}}</td>
+                <td>{{entry.Writers}}</td>
+                <td>{{entry.Actors}}</td>
+                <td>{{entry.Imdb_Rating}}</td>
+                <td>{{entry.Imdb_Votes}}</td>
+                <td>{{entry.Imdb_ID}}</td>
+                <td>{{entry.Movie_Budget}}</td>
+                <td>{{entry.Gross_in_Us}}</td>
+                <td>{{entry.World_Gross}}</td>
+                <td>{{entry.Opening_US_CAN}}</td>
+                <td>{{entry.Oscar_Wins}}</td>
+                <td>{{entry.Oscar_Nomination}}</td>
+                <td>{{entry.Other_Wins}}</td>
+                <td>{{entry.Nomination_Total}}</td>
+                <td><a href="#"
+                        class="btn btn-outline-danger btn-sm">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}

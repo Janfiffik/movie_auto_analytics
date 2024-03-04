@@ -9,7 +9,7 @@ from datetime import datetime
 import time as tm
 import re
 from application import app, db
-from application.models import MovieDatabase
+from application.models import MovieDataBase
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)

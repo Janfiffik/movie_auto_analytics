@@ -22,6 +22,7 @@ class NewMovieForm(FlaskForm):
                                       ("All ages", "G"), ("Television Parental Guidance", "TV-PG"),
                                       ("No one under 17", "X"), ("Television no one under 18", "TV_MA"),
                                       ("Over 18", "+18")])
+
     country = StringField("Country", validators=[DataRequired()])
     language = StringField("Language", validators=[DataRequired()])
     directors = StringField("Directors", validators=[DataRequired()])
