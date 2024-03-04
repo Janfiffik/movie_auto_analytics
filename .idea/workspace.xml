@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating pipline, saving data from form  to database">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating pipline, saving data to database. Showing data on home web page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/instance/moviesDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/application/instance/moviesDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imdb_data_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/imdb_data_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/movies_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/movies_raw_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/application/data/movies_raw_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imdb_data_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/imdb_data_pipeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709541710191</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Updating pipline, saving data to database. Showing data on home web page.">
+      <created>1709571545912</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709571545912</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,6 +296,7 @@
     <MESSAGE value="Creating dashboard web app for data analysis. Adding Flask-Wtf forms" />
     <MESSAGE value="Updating pipline, saving data to database" />
     <MESSAGE value="Updating pipline, saving data from form  to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating pipline, saving data from form  to database" />
+    <MESSAGE value="Updating pipline, saving data to database. Showing data on home web page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating pipline, saving data to database. Showing data on home web page." />
   </component>
 </project>
