@@ -32,6 +32,7 @@ class NewMovieForm(FlaskForm):
     Imdb_ID = StringField("IMDb ID", validators=[DataRequired()])
     movie_budget = IntegerField("Movie budget", validators=[DataRequired()])
     Gross_US = IntegerField("Gross income in USA", validators=[DataRequired()])
+    World_Gross = IntegerField("Gross income in World", validators=[DataRequired()])
     opening_US_CANADA = IntegerField("Income from opening in USA and Canada", validators=[DataRequired()])
     Oscar_Wins = IntegerField("Number of oscars", validators=[DataRequired()])
     Oscar_Nomination = IntegerField("Number oscar nominations", validators=[DataRequired()])

@@ -2,7 +2,7 @@ from application import db
 from datetime import datetime
 
 
-class MovieDatabase(db.Model):
+class MovieDataBase(db.Model):
     id: int = db.Column(db.Integer, primary_key=True)
     Title: str = db.Column(db.String, nullable=False)
     Released = db.Column(db.DateTime, nullable=False, default="Unknown")
