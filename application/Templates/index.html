@@ -32,31 +32,31 @@
         </thead>
         <tbody>
             <tr>
-                {% for entry in entries %}
-                <th scope="row">{{loop.index}}</th>
-                <td>{{entry.Title}}</td>
-                <td>{{entry.Released.strftime("%Y-%d-%m")}}</td>
-                <td>{{entry.Genre}}</td>
-                <td>{{entry.Length}}min</td>
-                <td>{{entry.Age_Rating}}</td>
-                <td>{{entry.Country}}</td>
-                <td>{{entry.Language}}</td>
-                <td>{{entry.Director}}</td>
-                <td>{{entry.Writers}}</td>
-                <td>{{entry.Actors}}</td>
-                <td>{{entry.Imdb_Rating}}</td>
-                <td>{{entry.Imdb_Votes}}</td>
-                <td>{{entry.Imdb_ID}}</td>
-                <td>{{entry.Movie_Budget}}</td>
-                <td>{{entry.Gross_in_Us}}</td>
-                <td>{{entry.World_Gross}}</td>
-                <td>{{entry.Opening_US_CAN}}</td>
-                <td>{{entry.Oscar_Wins}}</td>
-                <td>{{entry.Oscar_Nomination}}</td>
-                <td>{{entry.Other_Wins}}</td>
-                <td>{{entry.Nomination_Total}}</td>
-                <td><a href="#"
-                        class="btn btn-outline-danger btn-sm">Delete</a></td>
+                    {% for entry in entries %}
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{entry.Title}}</td>
+                    <td>{{entry.Released.strftime("%Y-%d-%m")}}</td>
+                    <td>{{entry.Genre}}</td>
+                    <td>{{entry.Length}}min</td>
+                    <td>{{entry.Age_Rating}}</td>
+                    <td>{{entry.Country}}</td>
+                    <td>{{entry.Language}}</td>
+                    <td>{{entry.Director}}</td>
+                    <td>{{entry.Writers}}</td>
+                    <td>{{entry.Actors}}</td>
+                    <td>{{entry.Imdb_Rating}}</td>
+                    <td>{{entry.Imdb_Votes}}</td>
+                    <td>{{entry.Imdb_ID}}</td>
+                    <td>{{entry.Movie_Budget}}</td>
+                    <td>{{entry.Gross_in_Us}}</td>
+                    <td>{{entry.World_Gross}}</td>
+                    <td>{{entry.Opening_US_CAN}}</td>
+                    <td>{{entry.Oscar_Wins}}</td>
+                    <td>{{entry.Oscar_Nomination}}</td>
+                    <td>{{entry.Other_Wins}}</td>
+                    <td>{{entry.Nomination_Total}}</td>
+                    <td><a href="{{ url_for('delete_movie', movie_id = entry.id) }}"
+                            class="btn btn-outline-danger btn-sm">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>

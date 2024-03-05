@@ -46,3 +46,17 @@ def add_movie():
     else:
         print("Form validation failed", form.errors)
     return render_template('add.html', title="Add Movie", form=form)
+
+
+@app.route('/delete/<int:movie_id>')
+def delete_movie(movie_id):
+    entry = MovieDataBase.query.get_or_404(int(movie_id))
+    db.session.delete(entry)
+    db.session.commit()
+    flash("Movie was deleted", "success")
+    return redirect(url_for("index"))
+
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')

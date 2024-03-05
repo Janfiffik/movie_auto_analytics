@@ -150,44 +150,23 @@ while True:
 
         with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
-
-        # name of the movie
-        movies_titles = [movie["Title"] for movie in data]
-
-        # Rating how old people can watch movie
-        movies_rated = [movie["Rated"] for movie in data]
-
-        # Genre of the movies
-        movies_genre = [movie["Genre"] for movie in data]
-
-        # Release date
-        movies_release = [movie["Released"] for movie in data]
+        movies_titles = [movie["Title"] for movie in data]         # name of the movie
+        movies_rated = [movie["Rated"] for movie in data]          # Rating how old people can watch movie
+        movies_genre = [movie["Genre"] for movie in data]          # Genre of the movies
+        movies_release = [movie["Released"] for movie in data]     # Release date
         movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]        # Done
-
-        # Length of the movies
-        movies_length = [movie["Runtime"] for movie in data]
+        movies_length = [movie["Runtime"] for movie in data]      # Length of the movies
         movies_length = [int(length.replace(" min", "")) for length in movies_length]            # Done
-
-        # Movie director__________________________
-        movies_director = [movie["Director"] for movie in data]
-
-        # Movie writers____________________________
-        movies_writers = [movie["Writer"] for movie in data]
-
-        # Movie actors_____________________________
-        movies_actors = [movie["Actors"] for movie in data]
-
-        movies_language = [movie["Language"] for movie in data]
-        movies_country = [movie["Country"] for movie in data]
-
-        movies_awards = [movie["Awards"] for movie in data]
-
+        movies_director = [movie["Director"] for movie in data]   # Movie director
+        movies_writers = [movie["Writer"] for movie in data]      # Movie writers
+        movies_actors = [movie["Actors"] for movie in data]       # Movie actors
+        movies_language = [movie["Language"] for movie in data]   # Movie actors
+        movies_country = [movie["Country"] for movie in data]     # Origin place
+        movies_awards = [movie["Awards"] for movie in data]       # Awards
         movies_imdb_rating = [movie["imdbRating"] for movie in data]
-        movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]                   # Done
-
+        movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]           # Done
         movies_imdb_votes = [movie["imdbVotes"] for movie in data]
-        movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]          # Done
-
+        movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]  # Done
         movies_imdb_id = [movie["imdbID"] for movie in data]
 
         # # Creating data_base -----------------------------------------------
