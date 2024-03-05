@@ -15,8 +15,33 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
 
-def save_data_to_database():
-    pass
+def save_data_to_database(data_to_db):
+    for row in data_to_db:
+        entry = MovieDataBase(Title=row[2],
+                              Released=datetime.strptime(row[3], '%Y-%m-%d'),
+                              Genre=row[4],
+                              Length=row[5],
+                              Age_Rating=row[6],
+                              Country=row[7].replace("[", "").replace("]", "").replace("'", ""),
+                              Language=row[8].replace("[", "").replace(']', '').replace("'", ""),
+                              Director=row[9].replace("[", "").replace(']', '').replace("'", ""),
+                              Writers=row[10].replace("[", "").replace(']', '').replace("'", ""),
+                              Actors=row[11].replace("[", "").replace(']', '').replace("'", ""),
+                              Imdb_Rating=row[12],
+                              Imdb_Votes=row[13],
+                              Imdb_ID=row[14],
+                              Movie_Budget=row[15],
+                              Gross_in_Us=row[16],
+                              World_Gross=row[17],
+                              Opening_US_CAN=row[18],
+                              Oscar_Wins=row[19],
+                              Oscar_Nomination=row[20],
+                              Other_Wins=row[21],
+                              Nomination_Total=row[22]
+                              )
+
+        db.session.add(entry)
+        db.session.commit()
 
 
 def imdb_top_movies():
@@ -120,7 +145,7 @@ def data_type_test(input_data, head=5, data_type=False):
     print(f"csv_data has: {data_shape[0]} rows. {data_shape[1]} columns.")
 
 
-def if_old_data():
+def if_in_data(database, new_data):
     pass
 
 # Code automation-----------------------------------------------------------------------------------------------
@@ -169,7 +194,8 @@ while True:
         movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]  # Done
         movies_imdb_id = [movie["imdbID"] for movie in data]
 
-        # # Creating data_base -----------------------------------------------
+        # Creating data_base -----------------------------------------------
+
         csv_data = pd.DataFrame()
         csv_data["Titles"] = movies_titles
         csv_data["Released"] = movies_release
@@ -205,6 +231,7 @@ while True:
             except ValueError:
                 price = re.findall(r"\d+", price)
                 new_budget.append(price)
+
         csv_data["Movie_Budget"] = new_budget
 
         # Creating new column Oscar_Wins with number of wins--------------------------------------------------
@@ -273,6 +300,6 @@ while True:
 
         data_type_test(csv_data, head=4, data_type=True)
 
-        # Write updated DataFrame to file
-        csv_data.to_csv("data/movies_data.csv", index=True)
+        # Write updated DataFrame to DataBase
+        save_data_to_database(data_to_db=csv_data)
         continue
