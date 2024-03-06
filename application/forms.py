@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, IntegerField, FloatField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
 
 
 class NewMovieForm(FlaskForm):
@@ -42,11 +42,11 @@ class NewMovieForm(FlaskForm):
 
 
 class UpdateMovieForm(FlaskForm):
-    Imdb_Rating = FloatField("IMDb Rating", validators=[DataRequired()])
-    Imdb_Votes = IntegerField("IMDb number of votes", validators=[DataRequired()])
-    Gross_US = IntegerField("Gross income in USA", validators=[DataRequired()])
-    World_Gross = IntegerField("Gross income in World", validators=[DataRequired()])
-    Oscar_Wins = IntegerField("Number of oscars", validators=[DataRequired()])
-    Oscar_Nomination = IntegerField("Number oscar nominations", validators=[DataRequired()])
-    Other_Wins = IntegerField("Other Wins", validators=[DataRequired()])
-    submit = SubmitField("Update movie in DataBase")
+    Imdb_Rating = FloatField("IMDb Rating", validators=[Optional()])
+    Imdb_Votes = IntegerField("IMDb number of votes", validators=[Optional()])
+    Gross_US = IntegerField("Gross income in USA", validators=[Optional()])
+    World_Gross = IntegerField("Gross income in World", validators=[Optional()])
+    Oscar_Wins = IntegerField("Number of oscars", validators=[Optional()])
+    Oscar_Nomination = IntegerField("Number oscar nominations", validators=[Optional()])
+    Other_Wins = IntegerField("Other Wins", validators=[Optional()])
+    submit = SubmitField("Update movie in DataBase", validators=[Optional()])

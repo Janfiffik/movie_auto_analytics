@@ -53,14 +53,38 @@ def update_movie(movie_id):
     entry = MovieDataBase.query.get_or_404(int(movie_id))
     form = UpdateMovieForm()
     if request.method == "POST" and form.validate_on_submit():
-        entry.Imdb_Rating = form.Imdb_Rating.data
-        entry.Imdb_Votes = form.Imdb_Votes.data
-        entry.Gross_in_Us = form.Gross_US.data
-        entry.World_Gross = form.World_Gross.data
-        entry.Oscar_Wins = form.Oscar_Wins.data
-        entry.Oscar_Nomination = form.Oscar_Nomination.data
-        entry.Other_Wins = form.Other_Wins.data
-        entry.Nomination_Total = form.Oscar_Wins.data + form.Oscar_Nomination.data + form.Other_Wins.data
+
+        fields_mapping = {'Imdb_Rating': 'Imdb_Rating',
+                          'Imdb_Votes': 'Imdb_Votes',
+                          'Gross_US': 'Gross_in_Us',
+                          'World_Gross': 'World_Gross',
+                          'Oscar_Wins': 'Oscar_Wins',
+                          'Oscar_Nomination': 'Oscar_Nomination',
+                          'Other_Wins': 'Other_Wins'
+                          }
+
+        for form_field, db_field in fields_mapping.items():
+            form_value = getattr(form, form_field).data
+            if form_value:
+                setattr(entry, db_field, form_value)
+
+        nomination_total = 0
+        if form.Oscar_Wins.data:
+            nomination_total += form.Oscar_Wins.data
+        else:
+            nomination_total += entry.Oscar_Wins
+
+        if form.Oscar_Nomination.data:
+            nomination_total += form.Oscar_Nomination.data
+        else:
+            nomination_total += entry.Oscar_Nomination
+
+        if form.Other_Wins.data:
+            nomination_total += form.Other_Wins.data
+        else:
+            nomination_total += entry.Other_Wins
+
+        entry.Nomination_Total = nomination_total
         db.session.commit()
         return redirect(url_for('index'))
     return render_template("update.html", form=form, old_data=entry)
