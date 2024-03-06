@@ -40,3 +40,7 @@ class NewMovieForm(FlaskForm):
     Other_Wins = IntegerField("Other Wins", validators=[DataRequired()])
     Nominations_Total = IntegerField("Total number of nominations", validators=[DataRequired()])
     submit = SubmitField("Add movie to DataBase")
+
+
+class UpdateMovieForm(FlaskForm):
+    submit = SubmitField("Update movie in DataBase")

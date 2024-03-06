@@ -1,6 +1,6 @@
 from application import app, db
 from flask import render_template, flash, request, redirect, url_for, get_flashed_messages
-from application.forms import NewMovieForm
+from application.forms import NewMovieForm, UpdateMovieForm
 from application.models import MovieDataBase
 from datetime import datetime
 
@@ -46,6 +46,15 @@ def add_movie():
     else:
         print("Form validation failed", form.errors)
     return render_template('add.html', title="Add Movie", form=form)
+
+
+@app.route('/update/<int:movie_id>')
+def update_movie(movie_id):
+    entry = MovieDataBase.query.get_or_404(int(movie_id))
+    form = UpdateMovieForm()
+    if request.method == "POST" and form.validate_on_submit():
+        pass
+    return render_template("update.html", form=form, title=entry.Title)
 
 
 @app.route('/delete/<int:movie_id>')

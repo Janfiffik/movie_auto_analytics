@@ -56,7 +56,9 @@
                     <td>{{entry.Other_Wins}}</td>
                     <td>{{entry.Nomination_Total}}</td>
                     <td><a href="{{ url_for('delete_movie', movie_id = entry.id) }}"
-                            class="btn btn-outline-danger btn-sm">Delete</a></td>
+                           class="btn btn-outline-danger btn-sm">Delete</a></td>
+                    <td><a href="{{ url_for('update_movie', movie_id = entry.id) }}"
+                           class="btn btn-outline-warning btn-sm">Update</a></td>
             </tr>
             {% endfor %}
         </tbody>
