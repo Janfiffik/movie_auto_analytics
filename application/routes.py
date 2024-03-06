@@ -36,7 +36,7 @@ def add_movie():
                               Oscar_Wins=form.Oscar_Wins.data,
                               Oscar_Nomination=form.Oscar_Nomination.data,
                               Other_Wins=form.Other_Wins.data,
-                              Nomination_Total=form.Nominations_Total.data
+                              Nomination_Total=form.Oscar_Wins.data + form.Oscar_Nomination.data + form.Other_Wins.data
                               )
 
         db.session.add(entry)
@@ -48,13 +48,22 @@ def add_movie():
     return render_template('add.html', title="Add Movie", form=form)
 
 
-@app.route('/update/<int:movie_id>')
+@app.route('/update/<int:movie_id>', methods=["GET", "POST"])
 def update_movie(movie_id):
     entry = MovieDataBase.query.get_or_404(int(movie_id))
     form = UpdateMovieForm()
     if request.method == "POST" and form.validate_on_submit():
-        pass
-    return render_template("update.html", form=form, title=entry.Title)
+        entry.Imdb_Rating = form.Imdb_Rating.data
+        entry.Imdb_Votes = form.Imdb_Votes.data
+        entry.Gross_in_Us = form.Gross_US.data
+        entry.World_Gross = form.World_Gross.data
+        entry.Oscar_Wins = form.Oscar_Wins.data
+        entry.Oscar_Nomination = form.Oscar_Nomination.data
+        entry.Other_Wins = form.Other_Wins.data
+        entry.Nomination_Total = form.Oscar_Wins.data + form.Oscar_Nomination.data + form.Other_Wins.data
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template("update.html", form=form, old_data=entry)
 
 
 @app.route('/delete/<int:movie_id>')

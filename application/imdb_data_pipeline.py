@@ -37,7 +37,7 @@ def save_data_to_database(data_to_db):
                               Oscar_Wins=row[19],
                               Oscar_Nomination=row[20],
                               Other_Wins=row[21],
-                              Nomination_Total=row[22]
+                              Nomination_Total=row[21] + row[20] + row[19]
                               )
 
         db.session.add(entry)

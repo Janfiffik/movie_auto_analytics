@@ -2,13 +2,53 @@
 {% block content %}
 
 <div class="col-xs-10 col-sm-6 col-md-6 ml-auto mr-auto">
-    <h2>Update movie {{ title }}</h2>
+    <h2>Update movie:</h2>
     <div class="card card-style mb-2">
         <div class="card-body">
             <form action="" method="POST">
                 {{ form.csrf_token() }}
               <fieldset class="form-group">
-                  <legend class="mb-4">Movie Info</legend>
+                  <legend class="mb-4">{{ old_data.Title }}</legend>
+
+                    <div class="form-group">
+                      {{ form.Imdb_Rating.label(class = "form-control-label") }}
+                      {{ form.Imdb_Rating(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.Imdb_Votes.label(class = "form-control-label") }}
+                      {{ form.Imdb_Votes(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.Gross_US.label(class = "form-control-label") }}
+                      {{ form.Gross_US(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.World_Gross.label(class = "form-control-label") }}
+                      {{ form.World_Gross(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.Oscar_Wins.label(class = "form-control-label") }}
+                      {{ form.Oscar_Wins(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.Oscar_Nomination.label(class = "form-control-label") }}
+                      {{ form.Oscar_Nomination(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                      {{ form.Other_Wins.label(class = "form-control-label") }}
+                      {{ form.Other_Wins(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group border-bottom pd-3">
+                      {{ form.submit(class = "btn btn-outline-info") }}
+                    </div>
+
               </fieldset>
             </form>
         </div>

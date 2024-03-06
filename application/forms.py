@@ -38,9 +38,15 @@ class NewMovieForm(FlaskForm):
     Oscar_Wins = IntegerField("Number of oscars", validators=[DataRequired()])
     Oscar_Nomination = IntegerField("Number oscar nominations", validators=[DataRequired()])
     Other_Wins = IntegerField("Other Wins", validators=[DataRequired()])
-    Nominations_Total = IntegerField("Total number of nominations", validators=[DataRequired()])
     submit = SubmitField("Add movie to DataBase")
 
 
 class UpdateMovieForm(FlaskForm):
+    Imdb_Rating = FloatField("IMDb Rating", validators=[DataRequired()])
+    Imdb_Votes = IntegerField("IMDb number of votes", validators=[DataRequired()])
+    Gross_US = IntegerField("Gross income in USA", validators=[DataRequired()])
+    World_Gross = IntegerField("Gross income in World", validators=[DataRequired()])
+    Oscar_Wins = IntegerField("Number of oscars", validators=[DataRequired()])
+    Oscar_Nomination = IntegerField("Number oscar nominations", validators=[DataRequired()])
+    Other_Wins = IntegerField("Other Wins", validators=[DataRequired()])
     submit = SubmitField("Update movie in DataBase")

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating pipline, saving data to database. Showing data on home web page.">
-      <change afterPath="$PROJECT_DIR$/application/Templates/update.html" afterDir="false" />
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Updating pipline, saving data to database. Update button for every movie in DataBase.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/Templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/Templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/imdb_data_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/imdb_data_pipeline.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/instance/moviesDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/application/instance/moviesDB.db" afterDir="false" />
@@ -289,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709634195568</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Updating pipline, saving data to database. Update button for every movie in DataBase.">
+      <created>1709726994818</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709726994818</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -323,6 +329,7 @@
     <MESSAGE value="Updating pipline, saving data to database" />
     <MESSAGE value="Updating pipline, saving data from form  to database" />
     <MESSAGE value="Updating pipline, saving data to database. Showing data on home web page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating pipline, saving data to database. Showing data on home web page." />
+    <MESSAGE value="Updating pipline, saving data to database. Update button for every movie in DataBase." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating pipline, saving data to database. Update button for every movie in DataBase." />
   </component>
 </project>
