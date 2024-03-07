@@ -16,6 +16,8 @@ pd.set_option('display.max_rows', None)
 
 
 def save_data_to_database(data_to_db):
+    """Function for sawing pandas DataFrame to file.db
+       data_to_db: it accepts Pandas dataframe """
     for row in data_to_db:
         entry = MovieDataBase(Title=row[2],
                               Released=datetime.strptime(row[3], '%Y-%m-%d'),
@@ -45,9 +47,9 @@ def save_data_to_database(data_to_db):
 
 
 def if_in_data(title):
-    saved_title = MovieDataBase.query.filter_by(Title=title).first()
+    entry = MovieDataBase.query.get_or_404(title)
     db.session.commit()
-    print(saved_title.data)
+    print(entry.data)
 
 
 def imdb_top_movies():
@@ -155,6 +157,7 @@ def data_type_test(input_data, head=5, data_type=False):
 
 
 def schedule_yearly():
+    """Function for returning how many seconds lef to the 1 january of the next year"""
     now = datetime.now()
     current_year = now.year
     next_year = current_year + 1
@@ -165,147 +168,147 @@ def schedule_yearly():
 
 
 # While loop
-# while True:
-#     time_left = schedule_yearly()
-#     tm.sleep(1)
-#     if time_left > 1:
-#         # print(f"waiting: {time_left}")
-#         continue
-#     else:
-#
-#         # Converting JSON to csv file-----------------------------------------------------------------------------------
-#         movie_names = imdb_top_movies()
-#         movie_json_data(movie_names, api_key="<YOUR API KEY>")
-#
-#         with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
-#             data = json.load(file)
-#         movies_titles = [movie["Title"] for movie in data]         # name of the movie
-#         movies_rated = [movie["Rated"] for movie in data]          # Rating how old people can watch movie
-#         movies_genre = [movie["Genre"] for movie in data]          # Genre of the movies
-#         movies_release = [movie["Released"] for movie in data]     # Release date
-#         movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]        # Done
-#         movies_length = [movie["Runtime"] for movie in data]      # Length of the movies
-#         movies_length = [int(length.replace(" min", "")) for length in movies_length]            # Done
-#         movies_director = [movie["Director"] for movie in data]   # Movie director
-#         movies_writers = [movie["Writer"] for movie in data]      # Movie writers
-#         movies_actors = [movie["Actors"] for movie in data]       # Movie actors
-#         movies_language = [movie["Language"] for movie in data]   # Movie actors
-#         movies_country = [movie["Country"] for movie in data]     # Origin place
-#         movies_awards = [movie["Awards"] for movie in data]       # Awards
-#         movies_imdb_rating = [movie["imdbRating"] for movie in data]
-#         movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]           # Done
-#         movies_imdb_votes = [movie["imdbVotes"] for movie in data]
-#         movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]  # Done
-#         movies_imdb_id = [movie["imdbID"] for movie in data]
-#
-#         # Creating data_base -----------------------------------------------
-#
-#         csv_data = pd.DataFrame()
-#         csv_data["Titles"] = movies_titles
-#         csv_data["Released"] = movies_release
-#         csv_data["Genre"] = movies_genre
-#         csv_data["Length"] = movies_length
-#         csv_data["Rating"] = movies_rated
-#         csv_data["Country"] = movies_country
-#         csv_data["Language"] = movies_language
-#         csv_data["Director"] = movies_director
-#         csv_data["Writers"] = movies_writers
-#         csv_data["Actors"] = movies_actors
-#         csv_data["Rewards"] = movies_awards
-#         csv_data["Imdb_Rating"] = movies_imdb_rating
-#         csv_data["Imdb_Votes"] = movies_imdb_votes
-#         csv_data["imdb_ID"] = movies_imdb_id
-#
-#         budget_and_price = movie_prices(movies_imdb_id)
-#         csv_data["Movie_Budget"] = budget_and_price[0]
-#         csv_data["Gross_in_US"] = budget_and_price[1]
-#         csv_data["World_gross_income"] = budget_and_price[2]
-#         csv_data["Opening_US_CANADA"] = budget_and_price[3]
-#
-#         # Set Titles column as index---------------------------------------------------------
-#         csv_data.reset_index(inplace=True)
-#         csv_data.set_index(csv_data["Titles"], inplace=True)
-#
-#         # Converting str to int in: ["Movie_Budget", "Opening_US_CANADA", "Gross_in_US", "World_gross_income"]
-#         movie_budget = csv_data["Movie_Budget"]
-#         new_budget = []
-#         for price in movie_budget:
-#             try:
-#                 new_budget.append(int(price))
-#             except ValueError:
-#                 price = re.findall(r"\d+", price)
-#                 new_budget.append(price)
-#
-#         csv_data["Movie_Budget"] = new_budget
-#
-#         # Creating new column Oscar_Wins with number of wins--------------------------------------------------
-#         raw_rewards = csv_data["Rewards"]
-#
-#         # Oscar/ Oscar nominations
-#         oscar_wins = []
-#         oscar_nomination = []
-#         for reward in raw_rewards:
-#             sublist = reward.split('.')
-#             sub_strings = ["Won", "Oscars", "Oscar"]
-#             sub_string1 = ["Nominated", "Oscar", "Oscars"]
-#
-#             if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
-#                 wins = re.findall(r'\d+', sublist[0])
-#                 oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
-#                 oscar_nomination.append(0)
-#             elif all(sublist[0].find(sub_string) != -1 for sub_string in sub_string1):
-#                 wins = re.findall(r'\d+', sublist[0])
-#                 oscar_nomination.extend(map(int, wins))
-#                 oscar_wins.append(0)
-#             else:
-#                 oscar_wins.append(0)
-#                 oscar_nomination.append(0)
-#         # --------------------------------------------------------------------
-#
-#         # creating new list with other nominations and wins.
-#         new_nom_wins = []
-#         for reward in raw_rewards:
-#             sublist = reward.split('.')
-#             if len(sublist) == 2:
-#                 new_list = sublist[1].split('&')
-#                 new_nom_wins.append(new_list)
-#             else:
-#                 new_list = sublist[0].split('&')
-#                 if len(new_list) != 2:
-#                     new_list.append("0")
-#                 new_nom_wins.append(new_list)
-#
-#         other_wins = []
-#         total_nominations = []
-#         for i in new_nom_wins:
-#             if "wins" in i[0]:
-#                 win = re.findall(r'\d+', i[0])
-#                 win = win[0]
-#                 other_wins.append(int(win))
-#             else:
-#                 other_wins.append(0)
-#             if "nominations" in i[1]:
-#                 nomination = re.findall(r"\d+", i[1])
-#                 nomination = nomination[0]
-#                 total_nominations.append(int(nomination))
-#             else:
-#                 total_nominations.append(0)
-#
-#         # Append new columns to DataFrame------------------
-#         csv_data["Oscar_Wins"] = oscar_wins
-#         csv_data["Oscar_Nomination"] = oscar_nomination
-#         csv_data["Other_Wins"] = other_wins
-#         csv_data["Nominations_Total"] = total_nominations
-#
-#         # Deleting useless columns------------------------------
-#         del csv_data["Rewards"]
-#         del csv_data["index"]
-#         del csv_data["Titles"]
-#
-#         data_type_test(csv_data, head=4, data_type=True)
-#
-#         # Write updated DataFrame to DataBase
-#         save_data_to_database(data_to_db=csv_data)
-#         continue
+while True:
+    time_left = schedule_yearly()
+    tm.sleep(1)
+    if time_left > 1:
+        # print(f"waiting: {time_left}")
+        continue
+    else:
+
+        # Converting JSON to csv file-----------------------------------------------------------------------------------
+        movie_names = imdb_top_movies()
+        movie_json_data(movie_names, api_key="<YOUR API KEY>")
+
+        with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        movies_titles = [movie["Title"] for movie in data]         # name of the movie
+        movies_rated = [movie["Rated"] for movie in data]          # Rating how old people can watch movie
+        movies_genre = [movie["Genre"] for movie in data]          # Genre of the movies
+        movies_release = [movie["Released"] for movie in data]     # Release date
+        movies_release = [datetime.strptime(date, '%d %b %Y') for date in movies_release]        # Done
+        movies_length = [movie["Runtime"] for movie in data]      # Length of the movies
+        movies_length = [int(length.replace(" min", "")) for length in movies_length]            # Done
+        movies_director = [movie["Director"] for movie in data]   # Movie director
+        movies_writers = [movie["Writer"] for movie in data]      # Movie writers
+        movies_actors = [movie["Actors"] for movie in data]       # Movie actors
+        movies_language = [movie["Language"] for movie in data]   # Movie actors
+        movies_country = [movie["Country"] for movie in data]     # Origin place
+        movies_awards = [movie["Awards"] for movie in data]       # Awards
+        movies_imdb_rating = [movie["imdbRating"] for movie in data]
+        movies_imdb_rating = [float(rating) for rating in movies_imdb_rating]           # Done
+        movies_imdb_votes = [movie["imdbVotes"] for movie in data]
+        movies_imdb_votes = [int(vote.replace(',', "")) for vote in movies_imdb_votes]  # Done
+        movies_imdb_id = [movie["imdbID"] for movie in data]
+
+        # Creating data_base -----------------------------------------------
+
+        csv_data = pd.DataFrame()
+        csv_data["Titles"] = movies_titles
+        csv_data["Released"] = movies_release
+        csv_data["Genre"] = movies_genre
+        csv_data["Length"] = movies_length
+        csv_data["Rating"] = movies_rated
+        csv_data["Country"] = movies_country
+        csv_data["Language"] = movies_language
+        csv_data["Director"] = movies_director
+        csv_data["Writers"] = movies_writers
+        csv_data["Actors"] = movies_actors
+        csv_data["Rewards"] = movies_awards
+        csv_data["Imdb_Rating"] = movies_imdb_rating
+        csv_data["Imdb_Votes"] = movies_imdb_votes
+        csv_data["imdb_ID"] = movies_imdb_id
+
+        budget_and_price = movie_prices(movies_imdb_id)
+        csv_data["Movie_Budget"] = budget_and_price[0]
+        csv_data["Gross_in_US"] = budget_and_price[1]
+        csv_data["World_gross_income"] = budget_and_price[2]
+        csv_data["Opening_US_CANADA"] = budget_and_price[3]
+
+        # Set Titles column as index---------------------------------------------------------
+        csv_data.reset_index(inplace=True)
+        csv_data.set_index(csv_data["Titles"], inplace=True)
+
+        # Converting str to int in: ["Movie_Budget", "Opening_US_CANADA", "Gross_in_US", "World_gross_income"]
+        movie_budget = csv_data["Movie_Budget"]
+        new_budget = []
+        for price in movie_budget:
+            try:
+                new_budget.append(int(price))
+            except ValueError:
+                price = re.findall(r"\d+", price)
+                new_budget.append(price)
+
+        csv_data["Movie_Budget"] = new_budget
+
+        # Creating new column Oscar_Wins with number of wins--------------------------------------------------
+        raw_rewards = csv_data["Rewards"]
+
+        # Oscar/ Oscar nominations
+        oscar_wins = []
+        oscar_nomination = []
+        for reward in raw_rewards:
+            sublist = reward.split('.')
+            sub_strings = ["Won", "Oscars", "Oscar"]
+            sub_string1 = ["Nominated", "Oscar", "Oscars"]
+
+            if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
+                wins = re.findall(r'\d+', sublist[0])
+                oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
+                oscar_nomination.append(0)
+            elif all(sublist[0].find(sub_string) != -1 for sub_string in sub_string1):
+                wins = re.findall(r'\d+', sublist[0])
+                oscar_nomination.extend(map(int, wins))
+                oscar_wins.append(0)
+            else:
+                oscar_wins.append(0)
+                oscar_nomination.append(0)
+        # --------------------------------------------------------------------
+
+        # creating new list with other nominations and wins.
+        new_nom_wins = []
+        for reward in raw_rewards:
+            sublist = reward.split('.')
+            if len(sublist) == 2:
+                new_list = sublist[1].split('&')
+                new_nom_wins.append(new_list)
+            else:
+                new_list = sublist[0].split('&')
+                if len(new_list) != 2:
+                    new_list.append("0")
+                new_nom_wins.append(new_list)
+
+        other_wins = []
+        total_nominations = []
+        for i in new_nom_wins:
+            if "wins" in i[0]:
+                win = re.findall(r'\d+', i[0])
+                win = win[0]
+                other_wins.append(int(win))
+            else:
+                other_wins.append(0)
+            if "nominations" in i[1]:
+                nomination = re.findall(r"\d+", i[1])
+                nomination = nomination[0]
+                total_nominations.append(int(nomination))
+            else:
+                total_nominations.append(0)
+
+        # Append new columns to DataFrame------------------
+        csv_data["Oscar_Wins"] = oscar_wins
+        csv_data["Oscar_Nomination"] = oscar_nomination
+        csv_data["Other_Wins"] = other_wins
+        csv_data["Nominations_Total"] = total_nominations
+
+        # Deleting useless columns------------------------------
+        del csv_data["Rewards"]
+        del csv_data["index"]
+        del csv_data["Titles"]
+
+        data_type_test(csv_data, head=4, data_type=True)
+
+        # Write updated DataFrame to DataBase
+        save_data_to_database(data_to_db=csv_data)
+        continue
 
 if_in_data(title="Duna: Part two")
