@@ -27,6 +27,19 @@ def group_data(data_to_group, column_names: list):
 
 
 def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax_title):
+    """
+
+    :param data:              Pandas.DataFrame or dictionary to plot
+    :param x_col:             Name of the key/column from dictionary or DataFrame.
+    :param y_col:             Name of the key/column from dictionary or DataFrame.
+    :param mk_color:          Name of the key/column for bar colors.
+    :param text:              Name of the key/column for text inside bars.
+    :param title:             Name of the whole plot.
+    :param x_title:           Name of the x-axis.
+    :param y_title:           Name of the y-axis.
+    :param col_ax_title:
+    :return:
+    """
     fig = go.Figure(go.Bar(x=data[x_col],
                            y=data[y_col],
                            marker_color=data[mk_color],

@@ -110,7 +110,7 @@ def dashboard():
     rating_vs_budget = plt.group_data(data, ['Title', 'Imdb_Rating', "Movie_Budget"])
     picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
                            mk_color="Imdb_Rating", text="Imdb_Rating", x_title="",
-                           y_title="Movie budget", col_ax_title="Rating", title="Movie Budget and Rating")
-    picture = picture.to_html(full_html=False)
+                           y_title="Movie budget", col_ax_title="Rating", title="")
+    picture_1 = picture.to_html(full_html=False)
 
-    return render_template('dashboard.html', bar_plot=picture)
+    return render_template('dashboard.html', price_vs_rating=picture_1)

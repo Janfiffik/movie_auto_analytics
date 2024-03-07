@@ -7,10 +7,8 @@
     <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Update button for every movie in DataBase. And adding backend for it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/Templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/data_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/data_plots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709809519950</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Update button for every movie in DataBase. And adding backend for it.">
+      <created>1709826670712</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1709826670712</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
