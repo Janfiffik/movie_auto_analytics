@@ -1,8 +1,10 @@
+import time
 from application import app, db
 from flask import render_template, flash, request, redirect, url_for, get_flashed_messages
 from application.forms import NewMovieForm, UpdateMovieForm
 from application.models import MovieDataBase
 from datetime import datetime
+from application import data_plots as plt
 
 
 @app.route("/")
@@ -99,6 +101,16 @@ def delete_movie(movie_id):
     return redirect(url_for("index"))
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=["POST", "GET"])
 def dashboard():
-    return render_template('dashboard.html')
+    MovieDataBase.query.session.close()
+    path = "C:/Users/Janokop/PycharmProjects/auto_it_analysis/automatic_analysis/application/instance/moviesDB.db"
+    data = plt.raw_pandas_df(path=path)
+
+    rating_vs_budget = plt.group_data(data, ['Title', 'Imdb_Rating', "Movie_Budget"])
+    picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
+                           mk_color="Imdb_Rating", text="Imdb_Rating", x_title="",
+                           y_title="Movie budget", col_ax_title="Rating", title="Movie Budget and Rating")
+    picture = picture.to_html(full_html=False)
+
+    return render_template('dashboard.html', bar_plot=picture)

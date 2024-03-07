@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<div class="card">
+    <div class="card-body">
+        {{ bar_plot| safe }}
+    </div>
+</div>
 
-{% endblock %}
+</body>
+{{ bar_plot| safe }}
+
 {% endblock %}
