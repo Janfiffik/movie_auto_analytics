@@ -51,6 +51,8 @@ def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax
         title=title,
         xaxis_title=x_title,
         yaxis_title=y_title,
-        coloraxis_colorbar=dict(title=col_ax_title)
+        coloraxis_colorbar=dict(title=col_ax_title),
+        plot_bgcolor='rgb(205, 205, 255)',
+        paper_bgcolor="rgb(215, 215, 255)"
     )
     return fig
