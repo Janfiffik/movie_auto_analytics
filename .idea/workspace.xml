@@ -7,7 +7,12 @@
     <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Update button for every movie in DataBase. And adding backend for it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/Templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/data/movies_raw_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/application/data/movies_raw_data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/data_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/data_plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/imdb_data_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/imdb_data_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/instance/moviesDB.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +52,7 @@
       <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis\movie_auto_analytics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis\application\data" />
       <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis" />
       <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis\movie_auto_analytics\application" />
     </key>
@@ -326,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709827823598</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Update button for every movie in DataBase. And adding backend for it.">
+      <created>1709828475996</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1709828475996</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

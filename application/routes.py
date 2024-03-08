@@ -106,6 +106,7 @@ def dashboard():
     MovieDataBase.query.session.close()
     path = "C:/Users/Janokop/PycharmProjects/auto_it_analysis/automatic_analysis/application/instance/moviesDB.db"
     data = plt.raw_pandas_df(path=path)
+    data = data.sort_values(by="Imdb_Rating", ascending=False)
 
     rating_vs_budget = plt.group_data(data, ['Title', 'Imdb_Rating', "Movie_Budget"])
     picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
@@ -113,4 +114,10 @@ def dashboard():
                            y_title="Movie budget", col_ax_title="Rating", title="")
     picture_1 = picture.to_html(full_html=False)
 
-    return render_template('dashboard.html', price_vs_rating=picture_1)
+    rating_vs_date = plt.group_data(data, ['Title', 'Imdb_Rating', 'Released'])
+    picture_2 = plt.bar_plot(rating_vs_date, x_col='Title', y_col="Released",
+                             mk_color='Imdb_Rating', text="Imdb_Rating", x_title="",
+                             y_title="Movie release", col_ax_title="Rating", title="")
+    picture_2 = picture_2.to_html(full_html=False)
+
+    return render_template('dashboard.html', price_vs_rating=picture_1, date_vs_rating=picture_2)

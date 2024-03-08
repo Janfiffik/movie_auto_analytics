@@ -12,7 +12,7 @@ def raw_pandas_df(path):
        path: file path for .db file you want to return as pandas DataFrame.
     """
     connection = sqlite3.connect(path)
-    query = "SELECT * FROM movie_database"
+    query = "SELECT * FROM movies"
     data_from_db = pd.read_sql_query(query, connection)
     return data_from_db
 
