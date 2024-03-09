@@ -98,8 +98,6 @@ def imdb_movies():
                 elif match4:
                     movie_name = match4.group(1)
                     movies_names.append(movie_name)
-                else:
-                    movies_names.append("-----NO MATCH----")
             page += 1
     return movies_names
 
@@ -201,17 +199,17 @@ def schedule_yearly():
     return time_remaining_seconds
 
 
-# # While loop
-# while True:
-#     time_left = schedule_yearly()
-#     tm.sleep(1)
-#     if time_left > 1:
-#         # print(f"waiting: {time_left}")
-#         continue
-#     else:
+# While loop
+while True:
+    time_left = schedule_yearly()
+    tm.sleep(1)
+    if time_left > 1:
+        # print(f"waiting: {time_left}")
+        continue
+    else:
         # Converting JSON to file.db file---------------------------------------------------------------
-        # movie_names = imdb_movies()
-        # movie_json_data(movie_names, api_key="632ea98")
+        movie_names = imdb_movies()
+        movie_json_data(movie_names, api_key="<YOUR API KEY>")
 
 with open('data/movies_raw_data.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
@@ -245,117 +243,114 @@ for movie in data:
     except IndexError:
         movies_roten_tomato.append(None)
 
-movies_roten_tomato = [rating.replace("%", "") if rating is not None else None for rating in movies_roten_tomato]
-movies_imdb_rating = [float(rating) if rating != 'N/A' else None for rating in movies_imdb_rating]
-movies_imdb_votes = [movie["imdbVotes"] for movie in data]
+        movies_roten_tomato = [rating.replace("%", "") if rating is not None else None for rating in movies_roten_tomato]
+        movies_imdb_rating = [float(rating) if rating != 'N/A' else None for rating in movies_imdb_rating]
+        movies_imdb_votes = [movie["imdbVotes"] for movie in data]
 
-movies_imdb_votes = [int(vote.replace(',', "")) if vote != 'N/A' else None for vote in movies_imdb_votes]
-movies_imdb_id = [movie["imdbID"] for movie in data]
+        movies_imdb_votes = [int(vote.replace(',', "")) if vote != 'N/A' else None for vote in movies_imdb_votes]
+        movies_imdb_id = [movie["imdbID"] for movie in data]
 
-# Creating data_base -----------------------------------------------
+        # Creating data_base -----------------------------------------------
 
-csv_data = pd.DataFrame()
-csv_data["Titles"] = movies_titles
-csv_data["Released"] = movies_release
-csv_data["Genre"] = movies_genre
-csv_data["Length"] = movies_length
-csv_data["Rating"] = movies_rated
-csv_data["Country"] = movies_country
-csv_data["Language"] = movies_language
-csv_data["Director"] = movies_director
-csv_data["Writers"] = movies_writers
-csv_data["Actors"] = movies_actors
-csv_data["Rewards"] = movies_awards
-csv_data["Imdb_Rating"] = movies_imdb_rating
-csv_data["Roting_Tomato"] = movies_roten_tomato
-csv_data["Imdb_Votes"] = movies_imdb_votes
-csv_data["imdb_ID"] = movies_imdb_id
+        csv_data = pd.DataFrame()
+        csv_data["Titles"] = movies_titles
+        csv_data["Released"] = movies_release
+        csv_data["Genre"] = movies_genre
+        csv_data["Length"] = movies_length
+        csv_data["Rating"] = movies_rated
+        csv_data["Country"] = movies_country
+        csv_data["Language"] = movies_language
+        csv_data["Director"] = movies_director
+        csv_data["Writers"] = movies_writers
+        csv_data["Actors"] = movies_actors
+        csv_data["Rewards"] = movies_awards
+        csv_data["Imdb_Rating"] = movies_imdb_rating
+        csv_data["Roting_Tomato"] = movies_roten_tomato
+        csv_data["Imdb_Votes"] = movies_imdb_votes
+        csv_data["imdb_ID"] = movies_imdb_id
 
-budget_and_price = movie_prices(movies_imdb_id)
-csv_data["Movie_Budget"] = budget_and_price[0]
-csv_data["Gross_in_US"] = budget_and_price[1]
-csv_data["World_gross_income"] = budget_and_price[2]
-csv_data["Opening_US_CANADA"] = budget_and_price[3]
+        budget_and_price = movie_prices(movies_imdb_id)
+        csv_data["Movie_Budget"] = budget_and_price[0]
+        csv_data["Gross_in_US"] = budget_and_price[1]
+        csv_data["World_gross_income"] = budget_and_price[2]
+        csv_data["Opening_US_CANADA"] = budget_and_price[3]
 
-# Set Titles column as index---------------------------------------------------------
-csv_data.reset_index(inplace=True)
-csv_data.set_index(csv_data["Titles"], inplace=True)
+        # Set Titles column as index---------------------------------------------------------
+        csv_data.reset_index(inplace=True)
+        csv_data.set_index(csv_data["Titles"], inplace=True)
 
-# Converting str to int in: ["Movie_Budget", "Opening_US_CANADA", "Gross_in_US", "World_gross_income"]
-movie_budget = csv_data["Movie_Budget"]
-new_budget = []
-for price in movie_budget:
-    try:
-        new_budget.append(int(price))
-    except ValueError:
-        price = re.findall(r"\d+", price)
-        new_budget.append(price)
+        # Converting str to int in: ["Movie_Budget", "Opening_US_CANADA", "Gross_in_US", "World_gross_income"]
+        movie_budget = csv_data["Movie_Budget"]
+        new_budget = []
+        for price in movie_budget:
+            try:
+                new_budget.append(int(price))
+            except ValueError:
+                price = re.findall(r"\d+", price)
+                new_budget.append(price)
 
-csv_data["Movie_Budget"] = new_budget
+        csv_data["Movie_Budget"] = new_budget
 
-# Creating new column Oscar_Wins with number of wins--------------------------------------------------
-raw_rewards = csv_data["Rewards"]
+        # Creating new column Oscar_Wins with number of wins--------------------------------------------------
+        raw_rewards = csv_data["Rewards"]
 
-# Oscar/ Oscar nominations
-oscar_wins = []
-oscar_nomination = []
-for reward in raw_rewards:
-    sublist = reward.split('.')
-    sub_strings = ["Won", "Oscars", "Oscar"]
-    sub_string1 = ["Nominated", "Oscar", "Oscars"]
+        # Oscar/ Oscar nominations
+        oscar_wins = []
+        oscar_nomination = []
+        for reward in raw_rewards:
+            sublist = reward.split('.')
+            sub_strings = ["Won", "Oscars", "Oscar"]
+            sub_string1 = ["Nominated", "Oscar", "Oscars"]
 
-    if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
-        wins = re.findall(r'\d+', sublist[0])
-        oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
-        oscar_nomination.append(0)
-    elif all(sublist[0].find(sub_string) != -1 for sub_string in sub_string1):
-        wins = re.findall(r'\d+', sublist[0])
-        oscar_nomination.extend(map(int, wins))
-        oscar_wins.append(0)
-    else:
-        oscar_wins.append(0)
-        oscar_nomination.append(0)
-# --------------------------------------------------------------------
+            if all(sublist[0].find(sub_string) != -1 for sub_string in sub_strings):
+                wins = re.findall(r'\d+', sublist[0])
+                oscar_wins.extend(map(int, wins))  # Convert numbers as integers and append it to list
+                oscar_nomination.append(0)
+            elif all(sublist[0].find(sub_string) != -1 for sub_string in sub_string1):
+                wins = re.findall(r'\d+', sublist[0])
+                oscar_nomination.extend(map(int, wins))
+                oscar_wins.append(0)
+            else:
+                oscar_wins.append(0)
+                oscar_nomination.append(0)
+        # --------------------------------------------------------------------
 
-# creating new list with other nominations and wins.
-new_nom_wins = []
-for reward in raw_rewards:
-    sublist = reward.split('.')
-    if len(sublist) == 2:
-        new_list = sublist[1].split('&')
-        new_nom_wins.append(new_list)
-    else:
-        new_list = sublist[0].split('&')
-        if len(new_list) != 2:
-            new_list.append("0")
-        new_nom_wins.append(new_list)
+        # creating new list with other nominations and wins.
+        new_nom_wins = []
+        for reward in raw_rewards:
+            sublist = reward.split('.')
+            if len(sublist) == 2:
+                new_list = sublist[1].split('&')
+                new_nom_wins.append(new_list)
+            else:
+                new_list = sublist[0].split('&')
+                if len(new_list) != 2:
+                    new_list.append("0")
+                new_nom_wins.append(new_list)
 
-other_wins = []
+        other_wins = []
 
-for i in new_nom_wins:
-    if "wins" in i[0]:
-        win = re.findall(r'\d+', i[0])
-        win = win[0]
-        other_wins.append(int(win))
-    else:
-        other_wins.append(0)
+        for i in new_nom_wins:
+            if "wins" in i[0]:
+                win = re.findall(r'\d+', i[0])
+                win = win[0]
+                other_wins.append(int(win))
+            else:
+                other_wins.append(0)
 
+        # Append new columns to DataFrame------------------
+        csv_data["Oscar_Wins"] = oscar_wins
+        csv_data["Oscar_Nomination"] = oscar_nomination
+        csv_data["Other_Wins"] = other_wins
 
-# Append new columns to DataFrame------------------
-csv_data["Oscar_Wins"] = oscar_wins
-csv_data["Oscar_Nomination"] = oscar_nomination
-csv_data["Other_Wins"] = other_wins
+        # Deleting useless columns------------------------------
+        del csv_data["Rewards"]
+        del csv_data["index"]
 
+        csv_data.to_csv("data/movie_data.csv", index=False)
 
-# Deleting useless columns------------------------------
-del csv_data["Rewards"]
-del csv_data["index"]
-
-
-csv_data.to_csv("data/movie_data.csv", index=False)
-
-# Write updated DataFrame to DataBase
-save_data_to_database(data_to_db=csv_data)
-        # continue
+        # Write updated DataFrame to DataBase
+        save_data_to_database(data_to_db=csv_data)
+        continue
 
 
