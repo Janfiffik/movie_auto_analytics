@@ -112,12 +112,19 @@ def dashboard():
     picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
                            mk_color="Imdb_Rating", text="Imdb_Rating", x_title="",
                            y_title="Movie budget", col_ax_title="Rating", title="")
-    picture_1 = picture.to_html(full_html=False)
+    rate_vs_budget = picture.to_html(full_html=False)
 
     rating_vs_date = plt.group_data(data, ['Title', 'Imdb_Rating', 'Released'])
     picture_2 = plt.bar_plot(rating_vs_date, x_col='Title', y_col="Released",
                              mk_color='Imdb_Rating', text="Imdb_Rating", x_title="",
                              y_title="Movie release", col_ax_title="Rating", title="")
-    picture_2 = picture_2.to_html(full_html=False)
+    date_of_release_vs_budget = picture_2.to_html(full_html=False)
 
-    return render_template('dashboard.html', price_vs_rating=picture_1, date_vs_rating=picture_2)
+    rating_vs_wins = plt.group_data(data, ['Title', 'Imdb_Rating', 'Nomination_Total'])
+    picture_3 = plt.bar_plot(rating_vs_wins, x_col='Title', y_col='Nomination_Total', mk_color='Imdb_Rating',
+                             text='Imdb_Rating', x_title='Nomination_Total', y_title='Nomination_Total',
+                             col_ax_title='Imdb_Rating', title='')
+    rating_vs_wins = picture_3.to_html(full_html=False)
+
+    return render_template('dashboard.html', price_vs_rating=rate_vs_budget, date_vs_rating=date_of_release_vs_budget,
+                           rating_vs_wins=rating_vs_wins)

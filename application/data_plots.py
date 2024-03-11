@@ -7,9 +7,39 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
 
+def data_by_boolean(data_to_filter, column_name, conditions: list):
+    """
+    For returning filtered DataFrame by column name and conditions.
+    :param data_to_filter: Add DataFrame to filter and get new variable with filtered DataFrame.
+    :param column_name:    Column name inside DataFrame.
+    :param conditions:     Condition operators for filter. ('equal', 'not_equal', 'higher',
+                                                            'lower', 'higher_equal', 'lower_equal')
+    :return:               Return filtered DataFrame by boolean indexing
+    """
+    operator_mapping = {
+        "equal": "==",
+        "not_equal": "!=",
+        "higher": ">",
+        "lower": "<",
+        "higher_equal": ">=",
+        "lower_equal": "<="
+    }
+    if conditions[1] == str:
+        comparison_operator = operator_mapping[conditions[0]]
+        comparison_value = conditions[1]
+        index = eval(f"data_to_filter['{column_name}'] {comparison_operator} '{comparison_value}'")
+        return data_to_filter[index]
+
+    elif conditions[1] == str or float:
+        comparison_operator = operator_mapping[conditions[0]]
+        comparison_value = conditions[1]
+        index = eval(f"data_to_filter['{column_name}'] {comparison_operator} {comparison_value}")
+        return data_to_filter[index]
+
+
 def raw_pandas_df(path):
     """Function that reads file.db and returns pandas dataframe.
-       path: file path for .db file you want to return as pandas DataFrame.
+       :param path: file path for .db file you want to return as pandas DataFrame.
     """
     connection = sqlite3.connect(path)
     query = "SELECT * FROM movies"
@@ -19,8 +49,8 @@ def raw_pandas_df(path):
 
 def group_data(data_to_group, column_names: list):
     """Function accepts pandas DataFrame and group them accordingly by column names,
-       data_to_group: pandas DataFrame
-       column_names: list(with column names)
+       :param data_to_group: pandas DataFrame
+       :param column_names: list(with column names)
     """
     grouped_data = data_to_group[column_names]
     return grouped_data
@@ -28,7 +58,7 @@ def group_data(data_to_group, column_names: list):
 
 def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax_title):
     """
-
+    Function for plotting DataFrame
     :param data:              Pandas.DataFrame or dictionary to plot
     :param x_col:             Name of the key/column from dictionary or DataFrame.
     :param y_col:             Name of the key/column from dictionary or DataFrame.
@@ -37,8 +67,8 @@ def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax
     :param title:             Name of the whole plot.
     :param x_title:           Name of the x-axis.
     :param y_title:           Name of the y-axis.
-    :param col_ax_title:
-    :return:
+    :param col_ax_title:      Name inside x-column
+    :return:                  Returns plot object.
     """
     fig = go.Figure(go.Bar(x=data[x_col],
                            y=data[y_col],

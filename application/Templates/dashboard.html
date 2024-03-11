@@ -31,6 +31,19 @@
     </div>
 </div>
 
+<div class="card">
+    <div class="card-body" style="background-color: #a7cff2;border-width: thick;">
+        <h5 class="card-title">Movie rating vs. Number of total nominations.</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+           Next graph compare Imdb rating with total number of nominations.
+        </h6>
+        {{ rating_vs_wins| safe}}
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
+
+        </h6>
+    </div>
+</div>
+
 </body>
 {{ bar_plot| safe }}
 

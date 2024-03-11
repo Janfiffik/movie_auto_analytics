@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Update pipeline to get more movies to database.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/imdb_data_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/imdb_data_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/Templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/data_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/data_plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +34,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Janokop/PycharmProjects/Death_Force_analysis/main.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Janokop/PycharmProjects/data_analisys",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Janokop\PycharmProjects\auto_it_analysis\automatic_analysis\movie_auto_analytics" />
@@ -340,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709894401988</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Update pipeline to get more movies to database.">
+      <created>1710002342841</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1710002342841</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
