@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="Update pipeline to get more movies to database.">
+    <list default="true" id="654b250b-099c-4601-8fd8-cf3015170ad4" name="Changes" comment="adding more charts to dashboard.html. Creating bool_index function for filtrating data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/Templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/Templates/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/data_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/data_plots.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710002342841</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="adding more charts to dashboard.html. Creating bool_index function for filtrating data">
+      <created>1710152542580</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1710152542580</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,6 +391,7 @@
     <MESSAGE value="Updating pipline, saving data to database. Update button for every movie in DataBase." />
     <MESSAGE value="Update button for every movie in DataBase. And adding backend for it." />
     <MESSAGE value="Update pipeline to get more movies to database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update pipeline to get more movies to database." />
+    <MESSAGE value="adding more charts to dashboard.html. Creating bool_index function for filtrating data" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding more charts to dashboard.html. Creating bool_index function for filtrating data" />
   </component>
 </project>

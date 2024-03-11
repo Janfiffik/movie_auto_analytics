@@ -6,6 +6,8 @@ from plotly.subplots import make_subplots
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
+# ---------------------data load and filtering-------------------------------
+
 
 def data_by_boolean(data_to_filter, column_name, conditions: list):
     """
@@ -55,15 +57,17 @@ def group_data(data_to_group, column_names: list):
     grouped_data = data_to_group[column_names]
     return grouped_data
 
+# ----------------------------Data Plots-------------------------------
 
-def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax_title):
+
+def bar_plot(data, x_col, y_col, mk_color, text_column, title, x_title, y_title, col_ax_title):
     """
-    Function for plotting DataFrame
+    Function for plotting bar chart from DataFrame
     :param data:              Pandas.DataFrame or dictionary to plot
     :param x_col:             Name of the key/column from dictionary or DataFrame.
     :param y_col:             Name of the key/column from dictionary or DataFrame.
     :param mk_color:          Name of the key/column for bar colors.
-    :param text:              Name of the key/column for text inside bars.
+    :param text_column:              Name of the key/column for text inside bars.
     :param title:             Name of the whole plot.
     :param x_title:           Name of the x-axis.
     :param y_title:           Name of the y-axis.
@@ -73,7 +77,7 @@ def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax
     fig = go.Figure(go.Bar(x=data[x_col],
                            y=data[y_col],
                            marker_color=data[mk_color],
-                           text=data[text],
+                           text=data[text_column],
                            textposition='auto',
                            ))
     fig.update_layout(
@@ -82,6 +86,38 @@ def bar_plot(data, x_col, y_col, mk_color, text, title, x_title, y_title, col_ax
         xaxis_title=x_title,
         yaxis_title=y_title,
         coloraxis_colorbar=dict(title=col_ax_title),
+        plot_bgcolor='rgb(205, 205, 255)',
+        paper_bgcolor="rgb(215, 215, 255)"
+    )
+    return fig
+
+
+def line_plot(data, x_col, y_col, mk_color, text_column, plot_title, x_title, y_title, column_ax_title):
+    """
+    Function for plotting line chart from DataFrame
+    :param data:              Pandas.DataFrame or dictionary to plot
+    :param x_col:             Name of the key/column from dictionary or DataFrame.
+    :param y_col:             Name of the key/column from dictionary or DataFrame.
+    :param mk_color:          Name of the key/column for bar colors.
+    :param text_column:       Name of the key/column for text inside bars.
+    :param plot_title:        Name of the whole plot.
+    :param x_title:           Name of the x-axis.
+    :param y_title:           Name of the y-axis.
+    :param column_ax_title:   Name inside x-column
+    :return:                  Returns plot object.
+    """
+    fig = go.Figure(go.Line(x=data[x_col],
+                            y=data[y_col],
+                            marker_color=data[mk_color],
+                            text=data[text_column],
+                            text_position='auto')
+                    )
+    fig.update_layout(
+        autosize=True,
+        title=plot_title,
+        xaxis_title=x_title,
+        yaxis_title=y_title,
+        coloraxis_colorbar=dict(title=column_ax_title),
         plot_bgcolor='rgb(205, 205, 255)',
         paper_bgcolor="rgb(215, 215, 255)"
     )
