@@ -26,7 +26,22 @@
         </h6>
         {{ date_vs_rating| safe}}
         <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
+            Looks like younger movies have the worst ratings than older one.
+            In next plot explore the mean during years.
+        </h6>
+    </div>
+</div>
 
+<div class="card">
+    <div class="card-body" style="background-color: #a7cff2;border-width: thick;">
+        <h5 class="card-title">Movie mean rating vs. years.</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+           Next graph compare years of release with mean ratings.
+        </h6>
+        {{ years_mean_rating| safe}}
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
+            Looks like younger movies have the worst ratings than older one.
+            Average rating in year 2024 is so high because in DataBase is stored just one movie.
         </h6>
     </div>
 </div>
@@ -40,6 +55,21 @@
         {{ rating_vs_wins| safe}}
         <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
 
+        </h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body" style="background-color: #a7cff2;border-width: thick;">
+        <h5 class="card-title">Movie budgets vs. years.</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+           Next graph compare movie budgets and income vs years. Test if movies get more expansive year by year.
+        </h6>
+        {{ years_vs_budget| safe}}
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
+            Looks like the best earning year was in {{ best_year['Years'].iloc[0] }}.
+            Movie: {{ best_year['Title'].iloc[0] }}.
+            Gross Income: ${{ best_year['Gross_Income'].iloc[0] }}.
         </h6>
     </div>
 </div>

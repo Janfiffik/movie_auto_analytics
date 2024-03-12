@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import plotly.graph_objs as go
+import plotly.express as px
 from plotly.subplots import make_subplots
 
 pd.set_option('display.max_columns', None)
@@ -60,15 +61,15 @@ def group_data(data_to_group, column_names: list):
 # ----------------------------Data Plots-------------------------------
 
 
-def bar_plot(data, x_col, y_col, mk_color, text_column, title, x_title, y_title, col_ax_title):
+def bar_plot(data, x_col, y_col, mk_color, text_column, plot_title, x_title, y_title, col_ax_title):
     """
     Function for plotting bar chart from DataFrame
     :param data:              Pandas.DataFrame or dictionary to plot
     :param x_col:             Name of the key/column from dictionary or DataFrame.
     :param y_col:             Name of the key/column from dictionary or DataFrame.
     :param mk_color:          Name of the key/column for bar colors.
-    :param text_column:              Name of the key/column for text inside bars.
-    :param title:             Name of the whole plot.
+    :param text_column:       Name of the key/column for text inside bars.
+    :param plot_title:        Name of the whole plot.
     :param x_title:           Name of the x-axis.
     :param y_title:           Name of the y-axis.
     :param col_ax_title:      Name inside x-column
@@ -82,7 +83,7 @@ def bar_plot(data, x_col, y_col, mk_color, text_column, title, x_title, y_title,
                            ))
     fig.update_layout(
         autosize=True,
-        title=title,
+        title=plot_title,
         xaxis_title=x_title,
         yaxis_title=y_title,
         coloraxis_colorbar=dict(title=col_ax_title),
@@ -92,26 +93,26 @@ def bar_plot(data, x_col, y_col, mk_color, text_column, title, x_title, y_title,
     return fig
 
 
-def line_plot(data, x_col, y_col, mk_color, text_column, plot_title, x_title, y_title, column_ax_title):
+def line_plot(data, x_column, y_column, mk_color, line_shape,
+              plot_title, x_title, y_title, column_ax_title):
     """
     Function for plotting line chart from DataFrame
     :param data:              Pandas.DataFrame or dictionary to plot
-    :param x_col:             Name of the key/column from dictionary or DataFrame.
-    :param y_col:             Name of the key/column from dictionary or DataFrame.
+    :param x_column           Name of the column for x-axis.
+    :param line_shape:        Set shape of the line for different data in dataframe.
+                              Possible values: ("solid", "dot", "dash", "longdash", "dashdot", "longshot")
+    :param y_column:          Name of the key/column from dictionary or DataFrame.
     :param mk_color:          Name of the key/column for bar colors.
-    :param text_column:       Name of the key/column for text inside bars.
     :param plot_title:        Name of the whole plot.
     :param x_title:           Name of the x-axis.
     :param y_title:           Name of the y-axis.
     :param column_ax_title:   Name inside x-column
     :return:                  Returns plot object.
     """
-    fig = go.Figure(go.Line(x=data[x_col],
-                            y=data[y_col],
-                            marker_color=data[mk_color],
-                            text=data[text_column],
-                            text_position='auto')
-                    )
+    fig = px.line(data,
+                  x=x_column,
+                  y=y_column,
+                  )
     fig.update_layout(
         autosize=True,
         title=plot_title,

@@ -110,21 +110,50 @@ def dashboard():
 
     rating_vs_budget = plt.group_data(data, ['Title', 'Imdb_Rating', "Movie_Budget"])
     picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
-                           mk_color="Imdb_Rating", text="Imdb_Rating", x_title="",
-                           y_title="Movie budget", col_ax_title="Rating", title="")
+                           mk_color="Imdb_Rating", text_column="Imdb_Rating", x_title="",
+                           y_title="Movie budget", col_ax_title="Rating", plot_title="")
     rate_vs_budget = picture.to_html(full_html=False)
 
     rating_vs_date = plt.group_data(data, ['Title', 'Imdb_Rating', 'Released'])
+    rating_vs_date = rating_vs_date.sort_values(by="Released", ascending=False)
     picture_2 = plt.bar_plot(rating_vs_date, x_col='Title', y_col="Released",
-                             mk_color='Imdb_Rating', text="Imdb_Rating", x_title="",
-                             y_title="Movie release", col_ax_title="Rating", title="")
+                             mk_color='Imdb_Rating', text_column="Imdb_Rating", x_title="",
+                             y_title="Movie release", col_ax_title="Rating", plot_title="")
     date_of_release_vs_budget = picture_2.to_html(full_html=False)
+
+    data.loc[:, "Years"] = data["Released"].str[0:4].astype(int)
+    years_vs_mean_rating = data[["Years", "Imdb_Rating"]].groupby("Years").mean().reset_index()
+    picture_5 = plt.line_plot(years_vs_mean_rating, x_column='Years', y_column='Imdb_Rating', line_shape='Years',
+                              mk_color='Years', x_title="Years", y_title="Mean rating",
+                              column_ax_title="Average rating by years", plot_title='')
+    mean_rating = picture_5.to_html(full_html=False)
 
     rating_vs_wins = plt.group_data(data, ['Title', 'Imdb_Rating', 'Nomination_Total'])
     picture_3 = plt.bar_plot(rating_vs_wins, x_col='Title', y_col='Nomination_Total', mk_color='Imdb_Rating',
-                             text='Imdb_Rating', x_title='Nomination_Total', y_title='Nomination_Total',
-                             col_ax_title='Imdb_Rating', title='')
+                             text_column='Imdb_Rating', x_title='Nomination_Total', y_title='Nomination_Total',
+                             col_ax_title='Imdb_Rating', plot_title='')
     rating_vs_wins = picture_3.to_html(full_html=False)
 
+    new_list = []
+    for budget in data["Movie_Budget"]:
+        if type(budget) == str:
+            budget = budget.replace("[", "").replace("]", "").replace("'", "")
+            budget = int(budget) / 1_000_000
+            new_list.append(budget)
+        else:
+            new_list.append(int(budget) / 1_000_000)
+    data["Movie_Budget"] = new_list
+    data["Gross_Income"] = (data["Gross_in_Us"] + data["World_Gross"] + data["Opening_US_CAN"]) / 1_000_000
+    years_vs_budget = data[["Years", "Movie_Budget", "Gross_Income"]].groupby("Years").mean().reset_index()
+    years_vs_budget = years_vs_budget.sort_values(by="Years", ascending=True)
+    years_vs_budget = years_vs_budget.reset_index()
+    picture_4 = plt.line_plot(years_vs_budget, x_column='Years', y_column=['Movie_Budget', 'Gross_Income'],
+                              line_shape='Years', mk_color='Years',
+                              x_title='Years', y_title='Average Movie Budget in mills',
+                              column_ax_title='Movies Budget', plot_title="")
+    budget_vs_years = picture_4.to_html(full_html=False)
+    best_year = data[data["Years"] == 1977]
+
     return render_template('dashboard.html', price_vs_rating=rate_vs_budget, date_vs_rating=date_of_release_vs_budget,
-                           rating_vs_wins=rating_vs_wins)
+                           years_mean_rating=mean_rating,
+                           rating_vs_wins=rating_vs_wins, years_vs_budget=budget_vs_years, best_year=best_year)
