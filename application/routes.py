@@ -107,6 +107,7 @@ def dashboard():
     path = "C:/Users/Janokop/PycharmProjects/auto_it_analysis/automatic_analysis/application/instance/moviesDB.db"
     data = plt.raw_pandas_df(path=path)
     data = data.sort_values(by="Imdb_Rating", ascending=False)
+    data.loc[:, "Years"] = data["Released"].str[0:4].astype(int)
 
     rating_vs_budget = plt.group_data(data, ['Title', 'Imdb_Rating', "Movie_Budget"])
     picture = plt.bar_plot(rating_vs_budget, x_col="Title", y_col="Movie_Budget",
@@ -121,7 +122,6 @@ def dashboard():
                              y_title="Movie release", col_ax_title="Rating", plot_title="")
     date_of_release_vs_budget = picture_2.to_html(full_html=False)
 
-    data.loc[:, "Years"] = data["Released"].str[0:4].astype(int)
     years_vs_mean_rating = data[["Years", "Imdb_Rating"]].groupby("Years").mean().reset_index()
     picture_5 = plt.line_plot(years_vs_mean_rating, x_column='Years', y_column='Imdb_Rating', line_shape='Years',
                               mk_color='Years', x_title="Years", y_title="Mean rating",
@@ -154,6 +154,10 @@ def dashboard():
     budget_vs_years = picture_4.to_html(full_html=False)
     best_year = data[data["Years"] == 1977]
 
+    movies_by_country = data[ "Country"].value_counts()
+    by_country = plt.pie_plot(data=movies_by_country, values='count', names=movies_by_country.index, title="")
+    by_country = by_country.to_html(full_html=False)
+
     return render_template('dashboard.html', price_vs_rating=rate_vs_budget, date_vs_rating=date_of_release_vs_budget,
-                           years_mean_rating=mean_rating,
+                           years_mean_rating=mean_rating, distribution_by_countries=by_country,
                            rating_vs_wins=rating_vs_wins, years_vs_budget=budget_vs_years, best_year=best_year)

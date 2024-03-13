@@ -40,8 +40,9 @@
         </h6>
         {{ years_mean_rating| safe}}
         <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
-            Looks like younger movies have the worst ratings than older one.
-            Average rating in year 2024 is so high because in DataBase is stored just one movie.
+            Looks like younger movies have the worst ratings than older one.<br>
+            Average rating in year 2024 is so high because in DataBase is stored just one movie.<br>
+            Better effects doesnt mean better ratings.
         </h6>
     </div>
 </div>
@@ -54,7 +55,8 @@
         </h6>
         {{ rating_vs_wins| safe}}
         <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
-
+            Graph Movie rating vs. Number of total nominations <br>
+            shows that some correlation between ratings and nominations exists.
         </h6>
     </div>
 </div>
@@ -70,6 +72,19 @@
             Looks like the best earning year was in {{ best_year['Years'].iloc[0] }}.
             Movie: {{ best_year['Title'].iloc[0] }}.
             Gross Income: ${{ best_year['Gross_Income'].iloc[0] }}.
+        </h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body" style="background-color: #a7cff2;border-width: thick;">
+        <h5 class="card-title">Movies by country.</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+           Next pie chart show number of movies per country.
+        </h6>
+        {{ distribution_by_countries| safe}}
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 5px;">
+            USA has film most movies and also has most co-productions.
         </h6>
     </div>
 </div>

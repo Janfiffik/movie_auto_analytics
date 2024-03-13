@@ -123,3 +123,22 @@ def line_plot(data, x_column, y_column, mk_color, line_shape,
         paper_bgcolor="rgb(215, 215, 255)"
     )
     return fig
+
+
+def pie_plot(data, values, names, title):
+    """
+    Function that return pie chart.
+    :param data:     DataFrame you want to plot.
+    :param values:   Name of the Column from DF. By which you want to create slices.
+    :param names:    Names of slices.
+    :param title:    Plot title.
+    :return:
+    """
+    fig = px.pie(data,
+                 values=values,
+                 names=names,
+                 title=title,
+                 hole=0.3
+                 )
+    fig.update_traces(textposition='inside', textinfo='percent+label')
+    return fig
